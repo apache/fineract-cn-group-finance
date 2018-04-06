@@ -1,37 +1,64 @@
 <div class="main-background" style="background-image:url('assets/Background.png');">
-  <div style="margin-top:10%; margin-left:10%;">
-  <div class="welcome">
-  <span class="greetings">Welcome To Apache Fineract CN</span>
-  </div>
-  <div class="language">
-    <span>Change language</span>
-  </div>
-  </div>
-  <div style="margin-left:10%;">
-  <div class="image-div"> 
-    <img src="assets/fineract.png" class="image">
-  </div>
-<div class="login-div mat-elevation-z2">
-    <mat-icon class="app-input">business</mat-icon>
-  <mat-form-field>
-  <input matInput placeholder="Tenant" class="app-input">
-</mat-form-field>
-  <br>
-  <mat-icon class="app-input">person</mat-icon>
-  <mat-form-field>
-      <input matInput placeholder="Username" class="app-input">
-    </mat-form-field>
-  <br>
-  <mat-icon class="app-input">https</mat-icon>
-      <mat-form-field>
-          <input matInput placeholder="Password" class="app-input">
+  <div style="margin-top:5%; margin-left:25%;">
+    <div class="welcome">
+      <span class="greetings">Welcome To Apache Fineract CN</span>
+    </div>
+    <div class="language">
+      <span class="change">Change language</span>
+      <mat-form-field class="select-input">
+        <mat-select [(value)]="selected">
+          <mat-option value="English">English</mat-option>
+          <mat-option value="French">French</mat-option>
+          <mat-option value="Portoguese">Portoguese</mat-option>
+        </mat-select>
       </mat-form-field>
-      <p>
-  <button mat-raised-button color="primary" type="submit" class="btn">Sign In</button>
-  </p>
-</div> 
-</div>
-  
+    </div>
+  </div>
+  <div style="margin-left:20%;">
+    <div class="image-div">
+      <img src="assets/fineract.png" class="image">
+    </div>
+    <div class="login-div mat-elevation-z2">
+      <br>
+      <div class="form-div">
+        <div class="app-input">
+          <mat-icon>business</mat-icon>
+        </div>
+        <div class="app-input1">
+          <mat-form-field class="app-input2">
+            <input matInput placeholder="Tenant">
+          </mat-form-field>
+        </div>
 
-  
-</div>
+        <br>
+        <br>
+        <div class="app-input">
+          <mat-icon>person</mat-icon>
+        </div>
+        <div class="app-input1">
+          <mat-form-field class="app-input2">
+            <input matInput placeholder="Username">
+          </mat-form-field>
+        </div>
+        <br>
+        <br>
+        <div class="app-input">
+          <mat-icon>https</mat-icon>
+          </div>
+          <div class="app-input1">
+            <mat-form-field class="app-input2">
+              <input matInput placeholder="Password">
+            </mat-form-field>
+          </div>
+          <br>
+          <br>
+          <p>
+            <button mat-raised-button color="primary" type="submit" class="btn">Sign In</button>
+          </p>
+          <br>
+        </div>
+      </div>
+
+
+
+    </div>

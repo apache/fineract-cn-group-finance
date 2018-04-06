@@ -1,7 +1,7 @@
 .greetings{
     color:white;
     margin-left:50px;
-    font-size:30px;
+    font-size:34px;
     margin-bottom:1%;
 }
 .login-div{
@@ -26,19 +26,32 @@
     
    
 }
-.image-div{
-    margin-top:5%;
-}
-
-.app-input{
-    padding:10%;
+.app-input,.app-input1{
+    display:flex;
+    display:inline-block;
     
-
 }
+.image-div{
+    margin-top:3%;
+}
+.image{
+    width: 300px;
+}
+.form-div{
+    margin-left:10%;
+}
+.app-input2{
+    
+    width:80%;
+}
+.app-input1{
+    width:90%;
+}
+
 .btn{
-    margin-left: 10%;
+    margin-left: 5%;
     margin-right: 10%;
-    width:70%;
+    width:75%;
 }
 .welcome,.language{
     display:flex;
@@ -49,4 +62,11 @@
 }
 .language{
     margin-left: 10%;
+    color:white;
+}
+.change{
+    font-size:12px;
+}
+.select-input{
+    width:100px;
 }

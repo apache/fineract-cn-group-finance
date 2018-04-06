@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule, MatInputModule, MatIconModule, MatFormFieldModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatInputModule, MatIconModule, MatFormFieldModule, MatSelectModule, MatSelect} from '@angular/material';
 
 import { NgModule } from '@angular/core';
 
@@ -14,8 +14,8 @@ import {LoginComponent} from './login/login.component'
     AppComponent,LoginComponent
   ],
   imports: [
-    BrowserModule,MatButtonModule, MatCheckboxModule, MatInputModule, MatIconModule,
-    MatFormFieldModule
+    BrowserModule, BrowserAnimationsModule, MatButtonModule, MatCheckboxModule, MatInputModule, MatIconModule,
+    MatFormFieldModule, MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
