@@ -1,0 +1,23 @@
+.clients,.accounting{
+    display: flex;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 10%;
+    margin-bottom: 5%;
+    width: 30%;
+    height:200px;
+
+}
+.organisation,.products{
+    display: flex;
+    display: inline-block;
+    vertical-align:top;
+    margin-left: 10%;
+    width: 30%;
+    height:200px;
+}
+
+mat-list-item{
+    padding-top:100px;
+    
+}
