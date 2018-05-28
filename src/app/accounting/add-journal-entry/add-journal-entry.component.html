@@ -3,9 +3,9 @@
   <a [routerLink]="['/navbar/accounting']">Accounting</a>
   <span class="current-page">/ Add Journal Entry</span>
 </p>
-
 <div class="main-div mat-elevation-z2">
   <h3 class="heading">Add Journal Entry</h3>
+  <mat-divider></mat-divider>
   <form class="fineract-form">
   <mat-form-field>
     <input matInput [matDatepicker]="picker" placeholder="Transaction date">
@@ -25,29 +25,35 @@
     <textarea matInput placeholder="Leave a comment"></textarea>
   </mat-form-field>
   </form>
-
-  <span>Affected Accounts</span>
-  <mat-card>
+<div>
+  <span><b>Affected Accounts</b></span>
+  <br/>
+  <mat-card class="debit-card">
     <span>Debit</span>
+    <br/>
     <mat-form-field>
       <input matInput placeholder="Account">
     </mat-form-field>
     <mat-form-field>
       <input matInput placeholder="Amount">
     </mat-form-field>
-    <button mat-raised-button color="warn"><mat-icon>clear</mat-icon></button>
-    <button mat-raised-button color="primary">Add Debit</button>
+    <button mat-icon-button color="warn"><mat-icon>clear</mat-icon></button>
+    <br/>
+    <button mat-raised-button class="button" color="primary">Add Debit</button>
   </mat-card>
-  <mat-card>
+  <mat-card class="credit-card">
     <span>Credit</span>
+    <br/>
     <mat-form-field>
       <input matInput placeholder="Account">
     </mat-form-field>
     <mat-form-field>
       <input matInput placeholder="Amount">
     </mat-form-field>
-    <button mat-raised-button color="warn"><mat-icon>clear</mat-icon></button>
-    <button mat-raised-button color="primary">Add Credit</button>
+    <button mat-icon-button color="warn"><mat-icon>clear</mat-icon></button>
+    <br/>
+    <button mat-raised-button class="button" color="primary">Add Credit</button>
   </mat-card>
+</div>
 </div>
 </div>

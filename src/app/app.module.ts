@@ -53,7 +53,10 @@ import { PayrollsComponent } from './accounting/payrolls/payrolls.component';
 import { ChartOfAccountsComponent } from './accounting/chart-of-accounts/chart-of-accounts.component';
 import { AddTransactionTypeComponent } from './accounting/add-transaction-type/add-transaction-type.component';
 import { TrialBalanceComponent } from './accounting/trial-balance/trial-balance.component';
-import { ChequeClearingComponent } from './accounting/cheque-clearing/cheque-clearing.component'
+import { ChequeClearingComponent } from './accounting/cheque-clearing/cheque-clearing.component';
+import { TransactionTypeComponent } from './accounting/transaction-type/transaction-type.component';
+import { AddMemberComponent } from './customer/add-member/add-member.component';
+import { ManageMembersComponent } from './customer/manage-members/manage-members.component'
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -71,6 +74,8 @@ const appRoutes: Routes = [
         { path: 'add_transaction_type', component: AddTransactionTypeComponent },
         { path: 'trial_balance', component: TrialBalanceComponent },
         { path: 'cheque_clearing', component: ChequeClearingComponent },
+        { path: 'transaction_type', component: TransactionTypeComponent },
+        { path: 'add_member', component: AddMemberComponent },
   ]
 }
 ];
@@ -80,7 +85,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,LoginComponent, NavbarComponent, DashboardComponent,
      AccountingComponent, GeneralLedgerComponent, AddJournalEntryComponent, 
-     PayrollsComponent, ChartOfAccountsComponent, AddTransactionTypeComponent, TrialBalanceComponent, ChequeClearingComponent
+     PayrollsComponent, ChartOfAccountsComponent, AddTransactionTypeComponent, TrialBalanceComponent, ChequeClearingComponent, TransactionTypeComponent, AddMemberComponent, ManageMembersComponent
   ],
   imports: [RouterModule.forRoot(appRoutes),
     BrowserModule, BrowserAnimationsModule,

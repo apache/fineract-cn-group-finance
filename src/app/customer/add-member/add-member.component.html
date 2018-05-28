@@ -1,0 +1,105 @@
+<div class="main-div mat-elevation-z2">
+  <h3 class="heading">Add Member</h3>
+  <mat-divider></mat-divider>
+<form class="fineract-form">
+  <mat-form-field>
+    <input matInput placeholder="Account">
+  </mat-form-field>
+<br/>
+  <mat-form-field>
+    <input matInput placeholder="Firstname">
+  </mat-form-field>
+<br/>
+  <mat-form-field>
+    <input matInput placeholder="Middlename">
+  </mat-form-field>
+  <br/>
+  <mat-form-field>
+    <input matInput placeholder="Lastname">
+  </mat-form-field>
+  <br/>
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  </form>
+  <span>Address</span>
+  <form class="fineract-form">
+  <mat-form-field>
+    <input matInput placeholder="Lastname">
+  </mat-form-field>
+  <br/>
+  <mat-form-field>
+    <input matInput placeholder="Lastname">
+  </mat-form-field>
+  <br/>
+  <mat-form-field>
+    <input matInput placeholder="Lastname">
+  </mat-form-field>
+  <br/>
+  <mat-form-field>
+    <input matInput placeholder="Lastname">
+  </mat-form-field>
+  </form>
+<span>Contact</span>
+<form class="fineract-form">
+<mat-form-field>
+  <input matInput placeholder="Lastname">
+</mat-form-field>
+<br/>
+<mat-form-field>
+  <input matInput placeholder="Lastname">
+</mat-form-field>
+<br/>
+<mat-form-field>
+  <input matInput placeholder="Lastname">
+</mat-form-field>
+</form>
+<span>Assign member to office(optional)</span>
+<form>
+  
+  <mat-form-field>
+    <mat-select placeholder="Assigned office">
+      <mat-option *ngFor="let office of offices" [value]="office.value">
+        {{ office.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br/>
+<mat-form-field>
+  <input matInput placeholder="Search office">
+</mat-form-field>
+<button mat-raised-button color="primary">search</button>
+</form>
+<span>Assign member to employee(optional)</span>
+<form>
+  
+  <mat-form-field>
+    <mat-select placeholder="Assigned employee">
+      <mat-option *ngFor="let employee of employees" [value]="employee.value">
+        {{ employee.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br/>
+<mat-form-field>
+  <input matInput placeholder="Search employee">
+</mat-form-field>
+<button mat-raised-button color="primary">search</button>
+</form>
+<span>Custom Fields</span>
+<br/>
+<mat-form-field>
+  <input matInput placeholder="Sample customer field">
+</mat-form-field>
+<br/>
+<mat-form-field>
+  <input matInput placeholder="employer">
+</mat-form-field>
+
+  <div>
+  <button mat-raised-button class="button1" color="primary">Submit</button>
+  <button mat-raised-button class="button2" color="warn">Cancel</button>
+  </div>
+</div>

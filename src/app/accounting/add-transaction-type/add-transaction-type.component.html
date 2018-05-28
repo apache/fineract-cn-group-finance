@@ -1,19 +1,23 @@
-<div class="my-div mat-elevation-z2">
-  <h3 class="heading">General Ledger</h3>
+<div class="main-div mat-elevation-z2">
+  <h3 class="heading">Add transaction Type</h3>
   <mat-divider></mat-divider>
+  <br/>
   <span>Transaction Type</span>
-
+<form class="fineract-form">
   <mat-form-field>
     <input matInput placeholder="Code">
   </mat-form-field>
-
+<br/>
   <mat-form-field>
     <input matInput placeholder="Name">
   </mat-form-field>
-
+<br/>
   <mat-form-field>
     <textarea matInput placeholder="Description(optional)"></textarea>
   </mat-form-field>
-  
-  <button mat-raise-button>Submit</button>
-  <button mat-raise-button>Cancel</button>
+  </form>
+  <div>
+  <button mat-raised-button class="button1" color="primary">Submit</button>
+  <button mat-raised-button class="button2" color="warn">Cancel</button>
+  </div>
+</div>

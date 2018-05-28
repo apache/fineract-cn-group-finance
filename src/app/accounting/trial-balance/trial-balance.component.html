@@ -1,10 +1,7 @@
 <div class="my-div mat-elevation-z2">
   <h3 class="heading">Trial Balance</h3>
   <mat-divider></mat-divider>
-  <div  class="fineract-button">
-  <a mat-raised-button color="primary" [routerLink]="['/navbar/managereport/create']">
-    <mat-icon>add</mat-icon>Add</a>
-    </div>
+ 
   <mat-form-field>
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter by name/short name">
   </mat-form-field>
