@@ -1,0 +1,42 @@
+<div class="my-div mat-elevation-z2">
+  <h3 class="heading">Payrolls</h3>
+  <mat-divider></mat-divider>
+  <div class="fineract-button">
+  <a mat-raised-button  color="primary" [routerLink]="['/navbar/managereport/create']">
+    <mat-icon>add</mat-icon>Add Payroll</a>
+    </div>
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter by name/short name">
+  </mat-form-field>
+  
+<br>
+<mat-divider></mat-divider>
+
+<mat-table #table [dataSource]="dataSource">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="createdby">
+    <mat-header-cell *matHeaderCellDef>Created by</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <a routerLink="{{element.id}}">{{element.createdby}}</a>
+    </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="createdon">
+    <mat-header-cell *matHeaderCellDef>Created on</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.createdon}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="accountno">
+      <mat-header-cell *matHeaderCellDef>Account number</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.accountno}} </mat-cell>
+    </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+  
+  
+</div>
+  

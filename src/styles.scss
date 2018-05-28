@@ -1,2 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body{
+    margin:0;
+}
+.heading{
+    margin-left:2%;
+    padding-top:5px;
+    padding-bottom: 5px;
+    height:15px;
+  }
+
+.fineract-button{
+    margin-top:5px;
+    margin-left:80%;
+    width:150px;
+}
+
+.main-div {
+    display:flex;
+    flex-direction: column;
+    margin-left: 2%;
+    margin-right:2%;
+    border-radius: 5px 5px 5px 5px;
+    background-color: white;
+    min-height: 100%;
+
+  }
+
+  .filter{
+      width: 50%;
+  }

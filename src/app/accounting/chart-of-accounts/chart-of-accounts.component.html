@@ -1,12 +1,12 @@
 <div class="main-div mat-elevation-z2">
-  <h3 class="heading">General Ledger</h3>
+  <h3 class="heading">Chart of Accounts</h3>
   <mat-divider></mat-divider>
   <div class="fineract-button">
-  <a mat-raised-button  color="primary" [routerLink]="['/navbar/add-ledger']">
-    <mat-icon>add</mat-icon>Add Ledger</a>
+  <a mat-raised-button  color="primary" >
+    Download</a>
     </div>
-  <mat-form-field>
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter by name">
+  <mat-form-field >
+    <input matInput class="filter" (keyup)="applyFilter($event.target.value)" placeholder="Filter by name/code">
   </mat-form-field>
   
 <br>
@@ -15,10 +15,10 @@
 <mat-table #table [dataSource]="dataSource">
 
   <!-- Position Column -->
-  <ng-container matColumnDef="id">
-    <mat-header-cell *matHeaderCellDef>Id </mat-header-cell>
+  <ng-container matColumnDef="code">
+    <mat-header-cell *matHeaderCellDef>Code </mat-header-cell>
     <mat-cell *matCellDef="let element">
-      <a routerLink="{{element.id}}">{{element.id}}</a>
+      <a routerLink="{{element.code}}">{{element.code}}</a>
     </mat-cell>
   </ng-container>
 
@@ -33,9 +33,9 @@
       <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="balance">
-        <mat-header-cell *matHeaderCellDef>Balance</mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.balance} </mat-cell>
+    <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.type} </mat-cell>
       </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

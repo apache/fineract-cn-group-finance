@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
 
 @Component({
-  selector: 'app-general-ledger',
-  templateUrl: './general-ledger.component.html',
-  styleUrls: ['./general-ledger.component.scss']
+  selector: 'app-trial-balance',
+  templateUrl: './trial-balance.component.html',
+  styleUrls: ['./trial-balance.component.scss']
 })
-export class GeneralLedgerComponent implements OnInit {
-  displayedColumns = ['id','name','description','balance'];
+export class TrialBalanceComponent implements OnInit {
+  displayedColumns = ['ledger','debit','credit'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   applyFilter(filterValue: string) {
@@ -23,10 +23,9 @@ export class GeneralLedgerComponent implements OnInit {
 
 }
 export interface Element {
-  id: number;
-  name:string;
-  description: string;
-  balance:string;
+  ledger: string;
+  debit: number;
+  credit: number;
   
 }
 

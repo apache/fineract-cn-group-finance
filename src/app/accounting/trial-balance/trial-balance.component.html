@@ -1,0 +1,42 @@
+<div class="my-div mat-elevation-z2">
+  <h3 class="heading">Trial Balance</h3>
+  <mat-divider></mat-divider>
+  <div  class="fineract-button">
+  <a mat-raised-button color="primary" [routerLink]="['/navbar/managereport/create']">
+    <mat-icon>add</mat-icon>Add</a>
+    </div>
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter by name/short name">
+  </mat-form-field>
+  
+<br>
+<mat-divider></mat-divider>
+
+<mat-table #table [dataSource]="dataSource">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="ledger">
+    <mat-header-cell *matHeaderCellDef>Ledger </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <a routerLink="{{element.ledger}}">{{element.ledger}}</a>
+    </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="debit">
+    <mat-header-cell *matHeaderCellDef>Dedit</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.debit}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="credit">
+      <mat-header-cell *matHeaderCellDef>Credit</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.credit}} </mat-cell>
+    </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+  
+  
+</div>
+  

@@ -1,9 +1,9 @@
 <mat-card class="clients">
-  <span>Client</span>
+  <span>Clients</span>
   <mat-list>
     <mat-list-item>
-      <span>View Members</span>|
-      <span>View Groups</span>
+      <span>View Members</span> &nbsp;|
+      &nbsp;<span>View Groups</span>
     </mat-list-item>
   </mat-list>
 </mat-card>
@@ -11,8 +11,8 @@
   <span>Accounting</span>
   <mat-list>
     <mat-list-item>
-      <span>View General Ledger</span>|
-      <span>View chart of Account</span>
+      <a [routerLink]="['/navbar/GL']">View General Ledger</a>|
+      &nbsp;<a [routerLink]="['/navbar/chart_of_accounts']">View chart of Account</a>
     </mat-list-item>
   </mat-list>
 </mat-card>
@@ -20,8 +20,8 @@
   <span>Organisation</span>
   <mat-list>
     <mat-list-item>
-      <span>View Offices</span>|
-      <span>View Employees</span>
+      <span>View Offices</span>&nbsp;|
+      &nbsp;<span>View Employees</span>
     </mat-list-item>
   </mat-list>
 </mat-card>
@@ -30,7 +30,7 @@
   <mat-list>
     <mat-list-item>
       <span>View Loan Products</span>|
-      <span>View Savings Product</span>
+      &nbsp;<span>View Savings Product</span>
     </mat-list-item>
   </mat-list>
 </mat-card>

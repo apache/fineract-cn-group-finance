@@ -1,0 +1,70 @@
+<div class="main-div mat-elevation-z2">
+  <h3 class="heading">Cheque Clearing</h3>
+  <mat-divider></mat-divider>
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter by identifier">
+  </mat-form-field>
+  
+<br>
+<mat-divider></mat-divider>
+
+<mat-table #table [dataSource]="dataSource">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="identifier">
+    <mat-header-cell *matHeaderCellDef>Identifier </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <a routerLink="{{element.identifier}}">{{element.identifier}}</a>
+    </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="drawee">
+    <mat-header-cell *matHeaderCellDef>Drawee</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.drawee}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="drawer">
+      <mat-header-cell *matHeaderCellDef>Drawer</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.drawer}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="payee">
+        <mat-header-cell *matHeaderCellDef>Payee</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.payee} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="amount">
+        <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.amount} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="dateissued">
+        <mat-header-cell *matHeaderCellDef>Date Issued</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.dateisued} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="state">
+        <mat-header-cell *matHeaderCellDef>state</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.state} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="approve">
+        <mat-header-cell *matHeaderCellDef>Approve</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.approve} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="cancel">
+        <mat-header-cell *matHeaderCellDef>Cancel</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.cancel} </mat-cell>
+      </ng-container>
+
+
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+  
+  
+</div>
+  
