@@ -56,7 +56,9 @@ import { TrialBalanceComponent } from './accounting/trial-balance/trial-balance.
 import { ChequeClearingComponent } from './accounting/cheque-clearing/cheque-clearing.component';
 import { TransactionTypeComponent } from './accounting/transaction-type/transaction-type.component';
 import { AddMemberComponent } from './customer/add-member/add-member.component';
-import { ManageMembersComponent } from './customer/manage-members/manage-members.component'
+import { ManageMembersComponent } from './customer/manage-members/manage-members.component';
+import { AddEmployeeComponent } from './employee/add-employee/add-employee.component';
+import { ManageEmployeeComponent } from './employee/manage-employee/manage-employee.component'
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -76,6 +78,9 @@ const appRoutes: Routes = [
         { path: 'cheque_clearing', component: ChequeClearingComponent },
         { path: 'transaction_type', component: TransactionTypeComponent },
         { path: 'add_member', component: AddMemberComponent },
+        { path: 'manage_members', component: ManageMembersComponent },
+        { path: 'add_employee', component: AddEmployeeComponent },
+        { path: 'manage_employees', component: ManageEmployeeComponent },
   ]
 }
 ];
@@ -85,7 +90,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,LoginComponent, NavbarComponent, DashboardComponent,
      AccountingComponent, GeneralLedgerComponent, AddJournalEntryComponent, 
-     PayrollsComponent, ChartOfAccountsComponent, AddTransactionTypeComponent, TrialBalanceComponent, ChequeClearingComponent, TransactionTypeComponent, AddMemberComponent, ManageMembersComponent
+     PayrollsComponent, ChartOfAccountsComponent, AddTransactionTypeComponent, TrialBalanceComponent, ChequeClearingComponent, TransactionTypeComponent, AddMemberComponent, ManageMembersComponent, AddEmployeeComponent, ManageEmployeeComponent
   ],
   imports: [RouterModule.forRoot(appRoutes),
     BrowserModule, BrowserAnimationsModule,

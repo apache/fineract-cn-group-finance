@@ -1,0 +1,63 @@
+<div class="main-div mat-elevation-z2">
+  <h3 class="heading">Add Employee</h3>
+  <mat-divider></mat-divider>
+  <span>EMPLOYEE DETAILS</span>
+<form class="fineract-form">
+  <mat-form-field>
+    <input matInput placeholder="username">
+  </mat-form-field>
+<br/>
+  <mat-form-field>
+    <input matInput placeholder="Firstname">
+  </mat-form-field>
+<br/>
+  <mat-form-field>
+    <input matInput placeholder="Middlename">
+  </mat-form-field>
+  <br/>
+  <mat-form-field>
+    <input matInput placeholder="Lastname">
+  </mat-form-field>
+  <br/>
+  <mat-form-field>
+    <mat-select placeholder="Role">
+      <mat-option *ngFor="let office of offices" [value]="office.value">
+        {{ office.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br/>
+  <mat-form-field>
+    <mat-select placeholder="Office(optional)">
+      <mat-option *ngFor="let office of offices" [value]="office.value">
+        {{ office.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br/>
+  <mat-form-field>
+    <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+   
+  </mat-form-field>
+
+  </form>
+  
+<span>EMPLOYEE CONTACT(OPTIONAL)</span>
+<form class="fineract-form">
+<mat-form-field>
+  <input matInput placeholder="Email">
+</mat-form-field>
+<br/>
+<mat-form-field>
+  <input matInput placeholder="Phone">
+</mat-form-field>
+<br/>
+<mat-form-field>
+  <input matInput placeholder="Mobile">
+</mat-form-field>
+</form>
+  <div>
+  <button mat-raised-button class="button1" color="primary">Submit</button>
+  <button mat-raised-button class="button2" color="warn">Cancel</button>
+  </div>
+</div>

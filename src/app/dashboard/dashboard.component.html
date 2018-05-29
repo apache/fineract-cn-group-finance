@@ -2,7 +2,7 @@
   <span>Clients</span>
   <mat-list>
     <mat-list-item>
-      <span>View Members</span> &nbsp;|
+      <a [routerLink]="['/navbar/manage_members']">View Members</a> &nbsp;|
       &nbsp;<span>View Groups</span>
     </mat-list-item>
   </mat-list>
@@ -21,7 +21,7 @@
   <mat-list>
     <mat-list-item>
       <span>View Offices</span>&nbsp;|
-      &nbsp;<span>View Employees</span>
+      &nbsp;<a [routerLink]="['/navbar/manage_employees']">View Employees</a>
     </mat-list-item>
   </mat-list>
 </mat-card>

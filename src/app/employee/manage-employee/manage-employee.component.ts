@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
 
+
 @Component({
-  selector: 'app-manage-members',
-  templateUrl: './manage-members.component.html',
-  styleUrls: ['./manage-members.component.scss']
+  selector: 'app-manage-employee',
+  templateUrl: './manage-employee.component.html',
+  styleUrls: ['./manage-employee.component.scss']
 })
-export class ManageMembersComponent implements OnInit {
-  displayedColumns = ['id','firstName','lastName','status'];
+export class ManageEmployeeComponent implements OnInit {
+  displayedColumns = ['id','firstName','lastName'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   applyFilter(filterValue: string) {
@@ -26,7 +27,6 @@ export interface Element {
   id: number;
   firstName: string;
   lastName: string;
-  status: boolean;
   
 }
 
