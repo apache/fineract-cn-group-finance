@@ -58,7 +58,13 @@ import { TransactionTypeComponent } from './accounting/transaction-type/transact
 import { AddMemberComponent } from './customer/add-member/add-member.component';
 import { ManageMembersComponent } from './customer/manage-members/manage-members.component';
 import { AddEmployeeComponent } from './employee/add-employee/add-employee.component';
-import { ManageEmployeeComponent } from './employee/manage-employee/manage-employee.component'
+import { ManageEmployeeComponent } from './employee/manage-employee/manage-employee.component';
+import { AddOfficeComponent } from './office/add-office/add-office.component';
+import { ViewOfficesComponent } from './office/view-offices/view-offices.component';
+import { AddLedgerComponent } from './accounting/add-ledger/add-ledger.component';
+import { AccountPayableComponent } from './accounting/account-payable/account-payable.component';
+import { AddChequeComponent } from './accounting/add-cheque/add-cheque.component';
+import { AddPayrollComponent } from './accounting/add-payroll/add-payroll.component'
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -81,6 +87,12 @@ const appRoutes: Routes = [
         { path: 'manage_members', component: ManageMembersComponent },
         { path: 'add_employee', component: AddEmployeeComponent },
         { path: 'manage_employees', component: ManageEmployeeComponent },
+        { path: 'view_offices', component: ViewOfficesComponent },
+        { path: 'add_office', component: AddOfficeComponent },
+        { path: 'add_ledger', component: AddLedgerComponent },
+        { path: 'account_payable', component: AccountPayableComponent },
+        { path: 'add_cheque', component: AddChequeComponent },
+        { path: 'add_payroll', component: AddPayrollComponent },
   ]
 }
 ];
@@ -90,7 +102,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,LoginComponent, NavbarComponent, DashboardComponent,
      AccountingComponent, GeneralLedgerComponent, AddJournalEntryComponent, 
-     PayrollsComponent, ChartOfAccountsComponent, AddTransactionTypeComponent, TrialBalanceComponent, ChequeClearingComponent, TransactionTypeComponent, AddMemberComponent, ManageMembersComponent, AddEmployeeComponent, ManageEmployeeComponent
+     PayrollsComponent, ChartOfAccountsComponent, AddTransactionTypeComponent, TrialBalanceComponent, ChequeClearingComponent, TransactionTypeComponent, AddMemberComponent, ManageMembersComponent, AddEmployeeComponent, ManageEmployeeComponent, AddOfficeComponent, ViewOfficesComponent, AddLedgerComponent, AccountPayableComponent, AddChequeComponent, AddPayrollComponent
   ],
   imports: [RouterModule.forRoot(appRoutes),
     BrowserModule, BrowserAnimationsModule,

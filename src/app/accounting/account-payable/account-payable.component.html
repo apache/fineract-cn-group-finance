@@ -1,0 +1,60 @@
+<div class="main-div mat-elevation-z2">
+  <h3 class="heading">Account Payable</h3>
+  <mat-divider></mat-divider>
+  <div class="fineract-button">
+    <a mat-raised-button  color="primary" [routerLink]="['/navbar/add_cheque']">
+      <mat-icon>add</mat-icon>Add cheque</a>
+      </div>
+
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter by identifier">
+  </mat-form-field>
+  
+<mat-table #table [dataSource]="dataSource">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef>Name </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <a routerLink="{{element.name}}">{{element.name}}</a>
+    </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="branch">
+    <mat-header-cell *matHeaderCellDef>Branch</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.branch}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="bankAccount">
+      <mat-header-cell *matHeaderCellDef>Bank Account</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.bankAccount}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="payableAccount">
+        <mat-header-cell *matHeaderCellDef>Payable Account</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.payableAccount} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="payee">
+        <mat-header-cell *matHeaderCellDef>Payee</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.payee} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="currency">
+        <mat-header-cell *matHeaderCellDef>Currency</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.currency} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="amount">
+        <mat-header-cell *matHeaderCellDef>amount</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.amount} </mat-cell>
+      </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+  
+  
+</div>
+  
