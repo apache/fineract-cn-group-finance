@@ -20,8 +20,8 @@ import {fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {EffectsRunner, EffectsTestingModule} from '@ngrx/effects/testing';
 import {SecurityApiEffects} from './service.effects';
 import {Observable} from 'rxjs/Observable';
-import {IdentityService} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/identity/identity.service';
-import {AuthenticationService} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/security/authn/authentication.service';
+import {IdentityService} from '../../../sevices/identity/identity.service';
+import {AuthenticationService} from '../../../sevices/security/authn/authentication.service';
 import {
   ChangePasswordAction,
   ChangePasswordSuccessAction,
@@ -35,11 +35,11 @@ import {
   RefreshAccessTokenSuccessAction,
   RefreshTokenStartTimerAction
 } from '../security.actions';
-import {PermittableGroupIdMapper} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/security/authz/permittable-group-id-mapper';
+import {PermittableGroupIdMapper} from '../../../sevices/security/authz/permittable-group-id-mapper';
 import {Store} from '@ngrx/store';
-import {FimsPermission} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/security/authz/fims-permission.model';
-import {Permission} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/identity/domain/permission.model';
-import {IdentityPermittableGroupIds} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/identity/domain/permittable-group-ids.model';
+import {FimsPermission} from '../../../sevices/security/authz/fims-permission.model';
+import {Permission} from '../../../sevices/identity/domain/permission.model';
+import {IdentityPermittableGroupIds} from '../../../sevices/identity/domain/permittable-group-ids.model';
 import {mockAuthentication} from '../testing/authentication.mock';
 
 describe('Security Api Effects', () => {

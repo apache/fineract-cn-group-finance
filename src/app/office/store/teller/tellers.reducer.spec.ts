@@ -19,7 +19,7 @@
 import {reducer} from './tellers.reducer';
 import {ResourceState} from '../../../common/store/resource.reducer';
 import {ExecuteCommandPayload, ExecuteCommandSuccessAction} from './teller.actions';
-import {Status} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/teller/domain/teller.model';
+import {Status} from '../../../sevices/teller/domain/teller.model';
 
 describe('Tellers Reducer', () => {
 

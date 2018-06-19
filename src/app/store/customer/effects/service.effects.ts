@@ -22,7 +22,7 @@ import {Observable} from 'rxjs/Observable';
 import {Action} from '@ngrx/store';
 import {of} from 'rxjs/observable/of';
 import * as customerActions from '../customer.actions';
-import {CustomerService} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/customer/customer.service';
+import {CustomerService} from '../../../sevices/customer/customer.service';
 import {emptySearchResult} from '../../../common/store/search.reducer';
 
 @Injectable()

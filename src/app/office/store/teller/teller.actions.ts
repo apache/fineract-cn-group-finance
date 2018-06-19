@@ -18,7 +18,7 @@
  */
 
 import {type} from '../../../store/util';
-import {Teller} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/teller/domain/teller.model';
+import {Teller} from '../../../sevices/teller/domain/teller.model';
 import {Action} from '@ngrx/store';
 import {
   CreateResourceSuccessPayload,
@@ -27,7 +27,7 @@ import {
   UpdateResourceSuccessPayload
 } from '../../../common/store/resource.reducer';
 import {RoutePayload} from '../../../common/store/route-payload';
-import {TellerManagementCommand} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/teller/domain/teller-management-command.model';
+import {TellerManagementCommand} from '../../../sevices/teller/domain/teller-management-command.model';
 
 export const LOAD_TELLER = type('[Office Teller] Load All ');
 export const LOAD_TELLER_SUCCESS = type('[Office Teller] Load All Success');

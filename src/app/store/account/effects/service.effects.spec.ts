@@ -19,8 +19,8 @@
 import {fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {EffectsRunner, EffectsTestingModule} from '@ngrx/effects/testing';
 import {AccountSearchApiEffects} from './service.effects';
-import {AccountingService} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/accounting/accounting.service';
-import {AccountPage} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/accounting/domain/account-page.model';
+import {AccountingService} from '../../../sevices/accounting/accounting.service';
+import {AccountPage} from '../../../sevices/accounting/domain/account-page.model';
 import {SearchAction, SearchByLedgerAction, SearchCompleteAction} from '../account.actions';
 import {Observable} from 'rxjs/Observable';
 import {emptySearchResult} from '../../../common/store/search.reducer';

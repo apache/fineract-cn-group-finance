@@ -17,7 +17,7 @@
  * under the License.
  */
 import * as security from './security.actions';
-import {FimsPermission} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/security/authz/fims-permission.model';
+import {FimsPermission} from '../../sevices/security/authz/fims-permission.model';
 
 export interface State {
   permissions: FimsPermission[];

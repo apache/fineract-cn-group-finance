@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {Authentication} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/identity/domain/authentication.model';
+import {Authentication} from '../../../sevices/identity/domain/authentication.model';
 
 export function mockAuthentication(): Authentication {
   return {

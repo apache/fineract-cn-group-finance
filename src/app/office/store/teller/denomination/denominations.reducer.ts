@@ -18,7 +18,7 @@
  */
 import * as denominations from './denomination.actions';
 import {DenominationPayload} from './denomination.actions';
-import {TellerDenomination} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/teller/domain/teller-denomination.model';
+import {TellerDenomination} from '../../../sevices/teller/domain/teller-denomination.model';
 
 export interface State {
   entities: TellerDenomination[];

@@ -18,7 +18,7 @@
  */
 import {Action} from '@ngrx/store';
 import {type} from '../util';
-import {FetchRequest} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/domain/paging/fetch-request.model';
+import {FetchRequest} from '../../sevices/domain/paging/fetch-request.model';
 import {SearchResult} from '../../common/store/search.reducer';
 
 export const SEARCH = type('[Employee] Search');

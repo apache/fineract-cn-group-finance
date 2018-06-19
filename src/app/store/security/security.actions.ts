@@ -18,8 +18,8 @@
  */
 import {Action} from '@ngrx/store';
 import {type} from '../util';
-import {Authentication} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/identity/domain/authentication.model';
-import {FimsPermission} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/security/authz/fims-permission.model';
+import {Authentication} from '../../sevices/identity/domain/authentication.model';
+import {FimsPermission} from '../../sevices/security/authz/fims-permission.model';
 
 export const LOGIN = type('[Security] Login');
 export const LOGIN_SUCCESS = type('[Security] Login Success');

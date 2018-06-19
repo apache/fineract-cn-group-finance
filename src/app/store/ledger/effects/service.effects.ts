@@ -23,7 +23,7 @@ import {Observable} from 'rxjs/Observable';
 import {Action} from '@ngrx/store';
 import {of} from 'rxjs/observable/of';
 import * as ledgerActions from '../ledger.actions';
-import {AccountingService} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/accounting/accounting.service';
+import {AccountingService} from '../../../sevices/accounting/accounting.service';
 import {emptySearchResult} from '../../../common/store/search.reducer';
 
 @Injectable()

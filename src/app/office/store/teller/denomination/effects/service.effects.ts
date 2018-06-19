@@ -22,7 +22,7 @@ import {Observable} from 'rxjs/Observable';
 import {Action} from '@ngrx/store';
 import * as denominationActions from '../denomination.actions';
 import {of} from 'rxjs/observable/of';
-import {TellerService} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/teller/teller-service';
+import {TellerService} from '../../../sevices/teller/teller-service';
 
 @Injectable()
 export class TellerDenominationApiEffects {

@@ -21,8 +21,8 @@ import {fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {EffectsRunner, EffectsTestingModule} from '@ngrx/effects/testing';
 import {RoleSearchApiEffects} from './service.effects';
 import {Observable} from 'rxjs/Observable';
-import {IdentityService} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/identity/identity.service';
-import {Role} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/identity/domain/role.model';
+import {IdentityService} from '../../../sevices/identity/identity.service';
+import {Role} from '../../../sevices/identity/domain/role.model';
 import {SearchAction, SearchCompleteAction} from '../role.actions';
 import {emptySearchResult} from '../../../common/store/search.reducer';
 

@@ -17,7 +17,7 @@
  * under the License.
  */
 import {type} from '../../../../store/util';
-import {TellerDenomination} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/teller/domain/teller-denomination.model';
+import {TellerDenomination} from '../../../sevices/teller/domain/teller-denomination.model';
 import {RoutePayload} from '../../../../common/store/route-payload';
 import {Action} from '@ngrx/store';
 

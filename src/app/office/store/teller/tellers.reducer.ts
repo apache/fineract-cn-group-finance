@@ -18,9 +18,9 @@
  */
 import {ResourceState} from '../../../common/store/resource.reducer';
 import * as tellers from '../teller/teller.actions';
-import {Status, Teller} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/teller/domain/teller.model';
+import {Status, Teller} from '../../../sevices/teller/domain/teller.model';
 import {idsToHashWithCurrentTimestamp, resourcesToHash} from '../../../common/store/reducer.helper';
-import {TellerManagementCommand} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/teller/domain/teller-management-command.model';
+import {TellerManagementCommand} from '../../../sevices/teller/domain/teller-management-command.model';
 
 export const initialState: ResourceState = {
   ids: [],

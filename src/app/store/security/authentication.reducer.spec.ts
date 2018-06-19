@@ -19,7 +19,7 @@
 import {mockAuthentication} from './testing/authentication.mock';
 import {reducer} from './authentication.reducer';
 import {LoginSuccessAction, LoginSuccessPayload, RefreshAccessTokenSuccessAction} from './security.actions';
-import {Authentication} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/identity/domain/authentication.model';
+import {Authentication} from '../../sevices/identity/domain/authentication.model';
 
 describe('Authentication Reducer', () => {
 

@@ -21,7 +21,7 @@ import {Actions, Effect} from '@ngrx/effects';
 import {Observable} from 'rxjs/Observable';
 import {Action} from '@ngrx/store';
 import * as denominationActions from '../denomination.actions';
-import {NotificationService, NotificationType} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/notification/notification.service';
+import {NotificationService, NotificationType} from '../../../sevices/notification/notification.service';
 
 @Injectable()
 export class TellerDenominationNotificationEffects {

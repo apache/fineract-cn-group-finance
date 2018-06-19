@@ -17,7 +17,7 @@
  * under the License.
  */
 import {Action, ActionReducer} from '@ngrx/store';
-import {FetchRequest} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/domain/paging/fetch-request.model';
+import {FetchRequest} from '../../../sevices/domain/paging/fetch-request.model';
 import {createSelector} from 'reselect';
 
 export function emptySearchResult(): SearchResult {

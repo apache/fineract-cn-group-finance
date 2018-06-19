@@ -22,14 +22,14 @@ import {Observable} from 'rxjs/Observable';
 import {Action, Store} from '@ngrx/store';
 import {of} from 'rxjs/observable/of';
 import * as securityActions from '../security.actions';
-import {AuthenticationService} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/security/authn/authentication.service';
-import {PermissionId} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/security/authz/permission-id.type';
-import {FimsPermission} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/security/authz/fims-permission.model';
-import {Permission} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/identity/domain/permission.model';
-import {PermittableGroupIdMapper} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/security/authz/permittable-group-id-mapper';
+import {AuthenticationService} from '../../../sevices/security/authn/authentication.service';
+import {PermissionId} from '../../../sevices/security/authz/permission-id.type';
+import {FimsPermission} from '../../../sevices/security/authz/fims-permission.model';
+import {Permission} from '../../../sevices/identity/domain/permission.model';
+import {PermittableGroupIdMapper} from '../../../sevices/security/authz/permittable-group-id-mapper';
 import * as fromRoot from '../../index';
-import {IdentityService} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/identity/identity.service';
-import {Password} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/identity/domain/password.model';
+import {IdentityService} from '../../../sevices/identity/identity.service';
+import {Password} from '../../../sevices/identity/domain/password.model';
 
 @Injectable()
 export class SecurityApiEffects {

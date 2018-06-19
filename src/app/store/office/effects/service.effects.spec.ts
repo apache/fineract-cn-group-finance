@@ -20,9 +20,9 @@ import {fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {EffectsRunner, EffectsTestingModule} from '@ngrx/effects/testing';
 import {OfficeSearchApiEffects} from './service.effects';
 import {Observable} from 'rxjs/Observable';
-import {OfficeService} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/office/office.service';
+import {OfficeService} from '../../../sevices/office/office.service';
 import {SearchAction, SearchCompleteAction} from '../office.actions';
-import {OfficePage} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/office/domain/office-page.model';
+import {OfficePage} from '../../../sevices/office/domain/office-page.model';
 import {emptySearchResult} from '../../../common/store/search.reducer';
 
 describe('Office Search Api Effects', () => {
