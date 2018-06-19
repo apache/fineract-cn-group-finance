@@ -2,6 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { RouterModule, Routes} from '@angular/router';
+import {HttpModule, Http} from '@angular/http';
+import {CommonModule} from '@angular/common';
+import {TranslateModule, TranslateStore} from '@ngx-translate/core';
+import {CovalentLoadingModule} from '@covalent/core';
+
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -38,7 +43,7 @@ import {
  } from '@angular/material';
  
 
-import { NgModule } from '@angular/core';
+import {LOCALE_ID, NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
@@ -64,7 +69,47 @@ import { ViewOfficesComponent } from './office/view-offices/view-offices.compone
 import { AddLedgerComponent } from './accounting/add-ledger/add-ledger.component';
 import { AccountPayableComponent } from './accounting/account-payable/account-payable.component';
 import { AddChequeComponent } from './accounting/add-cheque/add-cheque.component';
-import { AddPayrollComponent } from './accounting/add-payroll/add-payroll.component'
+import { AddPayrollComponent } from './accounting/add-payroll/add-payroll.component';
+
+import {HttpClient} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/http/http.service';
+import {IdentityService} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/identity/identity.service';
+import {OfficeService} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/office/office.service';
+import {CustomerService} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/customer/customer.service';
+import {AuthenticationService} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/security/authn/authentication.service';
+import {CatalogService} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/catalog/catalog.service';
+import {AccountingService} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/accounting/accounting.service';
+import {PortfolioService} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/portfolio/portfolio.service';
+import {TranslateLoader, TranslateService} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {PermittableGroupIdMapper} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/security/authz/permittable-group-id-mapper';
+import {reducer} from './store';
+import {StoreModule} from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
+import {NotificationService} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/notification/notification.service';
+import {OfficeSearchApiEffects} from './store/office/effects/service.effects';
+import {EmployeeSearchApiEffects} from './store/employee/effects/service.effects';
+import {RoleSearchApiEffects} from './store/role/effects/service.effects';
+import {CustomerSearchApiEffects} from './store/customer/effects/service.effects';
+import {AccountSearchApiEffects} from './store/account/effects/service.effects';
+import {SecurityRouteEffects} from './store/security/effects/route.effects';
+import {SecurityApiEffects} from './store/security/effects/service.effects';
+import {SecurityNotificationEffects} from './store/security/effects/notification.effects';
+import {LedgerSearchApiEffects} from './store/ledger/effects/service.effects';
+//import {ExistsGuardService} from './common/guards/exists-guard';
+import {CountryService} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/country/country.service';
+import {ImageService} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/image/image.service';
+import {DepositAccountService} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/depositAccount/deposit-account.service';
+import {CurrencyService} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/currency/currency.service';
+import {TellerService} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/teller/teller-service';
+import {ReportingService} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/reporting/reporting.service';
+import {getSelectedLanguage} from './common/i18n/translate';
+import {ChequeService} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/cheque/cheque.service';
+import {PayrollService} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/payroll/payroll.service';
+
+export function HttpLoaderFactory(http: Http) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -102,10 +147,39 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,LoginComponent, NavbarComponent, DashboardComponent,
      AccountingComponent, GeneralLedgerComponent, AddJournalEntryComponent, 
-     PayrollsComponent, ChartOfAccountsComponent, AddTransactionTypeComponent, TrialBalanceComponent, ChequeClearingComponent, TransactionTypeComponent, AddMemberComponent, ManageMembersComponent, AddEmployeeComponent, ManageEmployeeComponent, AddOfficeComponent, ViewOfficesComponent, AddLedgerComponent, AccountPayableComponent, AddChequeComponent, AddPayrollComponent
+     PayrollsComponent, ChartOfAccountsComponent, AddTransactionTypeComponent, 
+     TrialBalanceComponent, ChequeClearingComponent, TransactionTypeComponent,
+      AddMemberComponent, ManageMembersComponent, AddEmployeeComponent, ManageEmployeeComponent, AddOfficeComponent,
+       ViewOfficesComponent, AddLedgerComponent, AccountPayableComponent, AddChequeComponent, AddPayrollComponent,
+       
   ],
   imports: [RouterModule.forRoot(appRoutes),
     BrowserModule, BrowserAnimationsModule,
+    CommonModule, TranslateModule,CovalentLoadingModule,
+    FormsModule, ReactiveFormsModule,HttpModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [Http]
+      }
+    }),
+    StoreModule.provideStore(reducer),
+
+    /**
+     * Root effects
+     */
+    EffectsModule.run(SecurityApiEffects),
+    EffectsModule.run(SecurityRouteEffects),
+    EffectsModule.run(SecurityNotificationEffects),
+
+    EffectsModule.run(OfficeSearchApiEffects),
+    EffectsModule.run(EmployeeSearchApiEffects),
+    EffectsModule.run(CustomerSearchApiEffects),
+    EffectsModule.run(AccountSearchApiEffects),
+    EffectsModule.run(RoleSearchApiEffects),
+    EffectsModule.run(LedgerSearchApiEffects),
+
     MatAutocompleteModule,
     MatButtonModule,
     MatButtonToggleModule,
@@ -139,7 +213,31 @@ const appRoutes: Routes = [
     MatTabsModule,
     MatStepperModule
   ],
-  providers: [],
+  providers: [ HttpClient,
+    AuthenticationService,
+    PermittableGroupIdMapper,
+    IdentityService,
+    OfficeService,
+    CustomerService,
+    CatalogService,
+    AccountingService,
+    PortfolioService,
+    DepositAccountService,
+    TellerService,
+    ReportingService,
+    ChequeService,
+    PayrollService,
+    CountryService,
+    CurrencyService,
+    NotificationService,
+    TranslateService,
+    
+   // ExistsGuardService,
+   // ...appRoutingProviders,
+    ImageService,
+    {
+      provide: LOCALE_ID, useFactory: getSelectedLanguage, deps: [TranslateService],
+    } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

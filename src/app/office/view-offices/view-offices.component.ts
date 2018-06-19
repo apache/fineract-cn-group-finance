@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
 
+
+
 @Component({
   selector: 'app-view-offices',
   templateUrl: './view-offices.component.html',
   styleUrls: ['./view-offices.component.scss']
 })
 export class ViewOfficesComponent implements OnInit {
-
   displayedColumns = ['id','name','description'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 

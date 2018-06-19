@@ -6,10 +6,8 @@
     <div class="language">
       <span class="change">Change language</span>
       <mat-form-field class="select-input">
-        <mat-select [(value)]="selected">
-          <mat-option value="English">English</mat-option>
-          <mat-option value="French">French</mat-option>
-          <mat-option value="Portoguese">Portoguese</mat-option>
+        <mat-select [(ngModel)]="currentLanguage" name="language"  matTooltip="Change Language" matTooltipPosition="right" (change)="selectLanguage($event)">
+          <mat-option  *ngFor="let option of languageOptions" [value]="option.id"> {{option.label}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -19,6 +17,7 @@
       <img src="assets/fineract.png" class="image">
     </div>
     <div class="login-div mat-elevation-z2">
+        <form [formGroup]="form" (ngSubmit)="login()">
       <br>
       <div class="form-div">
         <div class="app-input">
@@ -26,7 +25,11 @@
         </div>
         <div class="app-input1">
           <mat-form-field class="app-input2">
-            <input matInput placeholder="Tenant">
+            <input matInput placeholder="Tenant" type="text" formControlName="tenant">
+            <mat-error *ngIf="form.get('tenant').hasError('required')">
+                Required
+              </mat-error>
+          
           </mat-form-field>
         </div>
 
@@ -37,7 +40,10 @@
         </div>
         <div class="app-input1">
           <mat-form-field class="app-input2">
-            <input matInput placeholder="Username">
+            <input matInput placeholder="Username" type="text" formControlName="username">
+            <mat-error *ngIf="form.get('password').hasError('required')">
+                Required
+              </mat-error>
           </mat-form-field>
         </div>
         <br>
@@ -47,18 +53,23 @@
           </div>
           <div class="app-input1">
             <mat-form-field class="app-input2">
-              <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+              <input matInput placeholder="Password" type="password" formControlName="password" autocomplete="new-password" [type]="hide ? 'password' : 'text'">
+              <mat-error *ngIf="form.get('password').hasError('required')">
+                  Required
+                </mat-error>
               <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
             </mat-form-field>
           </div>
           <br>
           <br>
           <p>
-            <button mat-raised-button color="primary" type="submit" class="btn" (click)="onLogin()">Sign In</button>
+            <button mat-raised-button color="primary" type="submit" class="btn" [disabled]="form.invalid">Sign In</button>
           </p>
           <br>
         </div>
+        </form>
       </div>
+  </div>
 
 
 
