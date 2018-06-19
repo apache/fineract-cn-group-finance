@@ -17,7 +17,7 @@
  * under the License.
  */
 import {createFormReducer, FormState} from './form.reducer';
-import {Error} from '../../../sevices/domain/error.model';
+import {Error} from '../../sevices/domain/error.model';
 import {Action} from '@ngrx/store';
 
 class CreateSuccessAction implements Action {

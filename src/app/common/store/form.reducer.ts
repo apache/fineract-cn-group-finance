@@ -17,7 +17,7 @@
  * under the License.
  */
 import {Action, ActionReducer} from '@ngrx/store';
-import {Error} from '../../../sevices/domain/error.model';
+import {Error} from '../../sevices/domain/error.model';
 
 export interface FormState {
   error?: Error;

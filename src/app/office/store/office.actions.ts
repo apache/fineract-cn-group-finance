@@ -18,8 +18,8 @@
  */
 import {Action} from '@ngrx/store';
 import {type} from '../../store/util';
-import {Office} from '../../../sevices/office/domain/office.model';
-import {Error} from '../../../sevices/domain/error.model';
+import {Office} from 'app/sevices/office/domain/office.model';
+import {Error} from 'app/sevices/domain/error.model';
 import {RoutePayload} from '../../common/store/route-payload';
 import {
   CreateResourceSuccessPayload,

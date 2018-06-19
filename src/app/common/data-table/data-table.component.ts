@@ -17,8 +17,8 @@
  * under the License.
  */
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Sort} from '../../../sevices/domain/paging/sort.model';
-import {Page} from '../../../sevices/domain/paging/page.model';
+import {Sort} from '../../sevices/domain/paging/sort.model';
+import {Page} from '../../sevices/domain/paging/page.model';
 import {IPageChangeEvent, ITdDataTableColumn, ITdDataTableSortChangeEvent, TdDataTableSortingOrder} from '@covalent/core';
 import {TranslateService} from '@ngx-translate/core';
 
