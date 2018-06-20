@@ -19,7 +19,7 @@
 import {Inject, Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Customer} from './domain/customer.model';
-import {HttpClient} from '../http/http.service';
+import {HttpClients} from '../http/http.service';
 import {CustomerPage} from './domain/customer-page.model';
 import {FetchRequest} from '../domain/paging/fetch-request.model';
 import {buildSearchParams} from '../domain/paging/search-param.builder';
@@ -35,7 +35,7 @@ import {CustomerDocument} from './domain/customer-document.model';
 @Injectable()
 export class CustomerService {
 
-  constructor(@Inject('customerBaseUrl') private baseUrl: string, private http: HttpClient, private imageService: ImageService) {
+  constructor(@Inject('customerBaseUrl') private baseUrl: string, private http: HttpClients, private imageService: ImageService) {
   }
 
   fetchCustomers(fetchRequest: FetchRequest): Observable<CustomerPage> {

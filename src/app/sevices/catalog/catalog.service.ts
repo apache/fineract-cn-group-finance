@@ -17,7 +17,7 @@
  * under the License.
  */
 import {Inject, Injectable} from '@angular/core';
-import {HttpClient} from '../http/http.service';
+import {HttpClients} from '../http/http.service';
 import {Observable} from 'rxjs/Observable';
 import {Catalog} from './domain/catalog.model';
 import {Field} from './domain/field.model';
@@ -25,7 +25,7 @@ import {Field} from './domain/field.model';
 @Injectable()
 export class CatalogService {
 
-  constructor(@Inject('customerBaseUrl') private baseUrl: string, private  http: HttpClient) {
+  constructor(@Inject('customerBaseUrl') private baseUrl: string, private  http: HttpClients) {
   }
 
   fetchCatalogs(): Observable<Catalog[]> {

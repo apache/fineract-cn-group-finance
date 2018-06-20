@@ -31,7 +31,7 @@ export const USER_HEADER = 'User';
 export const AUTHORIZATION_HEADER = 'Authorization';
 
 @Injectable()
-export class HttpClient {
+export class HttpClients {
 
   process: Subject<Action> = new Subject<Action>();
 

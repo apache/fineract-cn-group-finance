@@ -17,7 +17,7 @@
  * under the License.
  */
 import {Inject, Injectable} from '@angular/core';
-import {HttpClient} from '../http/http.service';
+import {HttpClients} from '../http/http.service';
 import {Ledger} from './domain/ledger.model';
 import {Observable} from 'rxjs/Observable';
 import {Account} from './domain/account.model';
@@ -40,7 +40,7 @@ import {FinancialCondition} from './domain/financial-condition.model';
 @Injectable()
 export class AccountingService {
 
-  constructor(private http: HttpClient, @Inject('accountingBaseUrl') private baseUrl: string) {
+  constructor(private http: HttpClients, @Inject('accountingBaseUrl') private baseUrl: string) {
   }
 
   public createLedger(ledger: Ledger): Observable<void> {

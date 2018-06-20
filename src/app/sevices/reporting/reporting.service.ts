@@ -17,7 +17,7 @@
  * under the License.
  */
 import {Inject, Injectable} from '@angular/core';
-import {HttpClient} from '../http/http.service';
+import {HttpClients} from '../http/http.service';
 import {Observable} from 'rxjs/Observable';
 import {ReportDefinition} from './domain/report-definition.model';
 import {FetchRequest} from '../domain/paging/fetch-request.model';
@@ -29,7 +29,7 @@ import {buildSearchParams} from '../domain/paging/search-param.builder';
 @Injectable()
 export class ReportingService {
 
-  constructor(private http: HttpClient, @Inject('reportingBaseUrl') private baseUrl: string) {
+  constructor(private http: HttpClients, @Inject('reportingBaseUrl') private baseUrl: string) {
   }
 
   fetchCategories(): Observable<string[]> {

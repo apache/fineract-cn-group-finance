@@ -17,7 +17,7 @@
  * under the License.
  */
 import {Inject, Injectable} from '@angular/core';
-import {HttpClient} from '../http/http.service';
+import {HttpClients} from '../http/http.service';
 import {Observable} from 'rxjs/Observable';
 import {Product} from './domain/product.model';
 import {RequestOptionsArgs, URLSearchParams} from '@angular/http';
@@ -47,7 +47,7 @@ import {CaseCustomerDocuments} from './domain/case-customer-documents.model';
 @Injectable()
 export class PortfolioService {
 
-  constructor(private http: HttpClient, @Inject('portfolioBaseUrl') private baseUrl: string) {
+  constructor(private http: HttpClients, @Inject('portfolioBaseUrl') private baseUrl: string) {
   }
 
   findAllPatterns(): Observable<void> {

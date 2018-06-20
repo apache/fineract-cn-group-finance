@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { RouterModule, Routes} from '@angular/router';
-import {HttpModule, Http} from '@angular/http';
+import {HttpModule,Http} from '@angular/http';
 import {CommonModule} from '@angular/common';
 import {TranslateModule, TranslateStore} from '@ngx-translate/core';
 import {CovalentLoadingModule} from '@covalent/core';
@@ -40,6 +40,7 @@ import {
   MatTableModule,
   MatTabsModule,
   MatStepperModule
+
  } from '@angular/material';
  
 
@@ -71,7 +72,7 @@ import { AccountPayableComponent } from './accounting/account-payable/account-pa
 import { AddChequeComponent } from './accounting/add-cheque/add-cheque.component';
 import { AddPayrollComponent } from './accounting/add-payroll/add-payroll.component';
 
-import {HttpClient} from './sevices/http/http.service';
+import {HttpClients} from './sevices/http/http.service';
 import {IdentityService} from './sevices/identity/identity.service';
 import {OfficeService} from './sevices/office/office.service';
 import {CustomerService} from './sevices/customer/customer.service';
@@ -213,7 +214,7 @@ const appRoutes: Routes = [
     MatTabsModule,
     MatStepperModule
   ],
-  providers: [ HttpClient,
+  providers: [ HttpClients,
     AuthenticationService,
     PermittableGroupIdMapper,
     IdentityService,

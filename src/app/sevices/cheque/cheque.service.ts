@@ -17,7 +17,7 @@
  * under the License.
  */
 import {Inject, Injectable} from '@angular/core';
-import {HttpClient} from '../http/http.service';
+import {HttpClients} from '../http/http.service';
 import {Observable} from 'rxjs/Observable';
 import {RequestOptionsArgs, URLSearchParams} from '@angular/http';
 import {Cheque} from './domain/cheque.model';
@@ -31,7 +31,7 @@ import {mapToFimsCheque, mapToFimsCheques} from './domain/mapper/fims-cheque.map
 @Injectable()
 export class ChequeService {
 
-  constructor(private http: HttpClient, @Inject('chequeBaseUrl') private baseUrl: string) {
+  constructor(private http: HttpClients, @Inject('chequeBaseUrl') private baseUrl: string) {
   }
 
   public issue(issuingCount: IssuingCount): Observable<string> {

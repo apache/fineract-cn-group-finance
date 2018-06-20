@@ -18,7 +18,7 @@
  */
 import {Inject, Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {HttpClient} from '../http/http.service';
+import {HttpClients} from '../http/http.service';
 import {Error} from '../domain/error.model';
 import {RequestOptionsArgs, URLSearchParams,} from '@angular/http';
 import {Office} from './domain/office.model';
@@ -32,7 +32,7 @@ import {ContactDetail} from '../domain/contact/contact-detail.model';
 @Injectable()
 export class OfficeService {
 
-  constructor(private http: HttpClient, @Inject('officeBaseUrl') private baseUrl: string) {
+  constructor(private http: HttpClients, @Inject('officeBaseUrl') private baseUrl: string) {
   }
 
   createOffice(office: Office): Observable<Office> {

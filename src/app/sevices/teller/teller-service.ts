@@ -18,7 +18,7 @@
  */
 
 import {Inject, Injectable} from '@angular/core';
-import {HttpClient} from '../http/http.service';
+import {HttpClients} from '../http/http.service';
 import {Teller} from './domain/teller.model';
 import {Observable} from 'rxjs/Observable';
 import {TellerManagementCommand} from './domain/teller-management-command.model';
@@ -32,7 +32,7 @@ import {TellerDenomination} from './domain/teller-denomination.model';
 @Injectable()
 export class TellerService {
 
-  constructor(private http: HttpClient, @Inject('tellerBaseUrl') private baseUrl: string) {
+  constructor(private http: HttpClients, @Inject('tellerBaseUrl') private baseUrl: string) {
   }
 
   create(officeIdentifier: string, teller: Teller): Observable<void> {

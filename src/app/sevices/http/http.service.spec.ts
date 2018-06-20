@@ -17,7 +17,7 @@
  * under the License.
  */
 import {MockBackend, MockConnection} from '@angular/http/testing';
-import {AUTHORIZATION_HEADER, HttpClient, TENANT_HEADER, USER_HEADER} from './http.service';
+import {AUTHORIZATION_HEADER, HttpClients, TENANT_HEADER, USER_HEADER} from './http.service';
 import {
   BaseRequestOptions,
   ConnectionBackend,
@@ -49,7 +49,7 @@ describe('Test http client', () => {
     }
   };
 
-  const doPostRequest = function (httpClient: HttpClient, options?: RequestOptionsArgs): void {
+  const doPostRequest = function (httpClient: HttpClients, options?: RequestOptionsArgs): void {
     httpClient.post('/test', {}, options).subscribe(() => {
     });
   };
@@ -66,9 +66,9 @@ describe('Test http client', () => {
         }
         },
         Http,
-        HttpClient,
+        HttpClients,
       ]);
-      this.httpClient = this.injector.get(HttpClient);
+      this.httpClient = this.injector.get(HttpClients);
       this.backend = this.injector.get(ConnectionBackend) as MockBackend;
     });
 

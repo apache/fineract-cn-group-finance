@@ -17,7 +17,7 @@
  * under the License.
  */
 import {Inject, Injectable} from '@angular/core';
-import {HttpClient} from '../http/http.service';
+import {HttpClients} from '../http/http.service';
 import {Observable} from 'rxjs/Observable';
 import {ProductDefinition} from './domain/definition/product-definition.model';
 import {ProductDefinitionCommand} from './domain/definition/product-definition-command.model';
@@ -30,7 +30,7 @@ import {AvailableTransactionType} from './domain/instance/available-transaction-
 @Injectable()
 export class DepositAccountService {
 
-  constructor(private http: HttpClient, @Inject('depositAccountBaseUrl') private baseUrl: string) {
+  constructor(private http: HttpClients, @Inject('depositAccountBaseUrl') private baseUrl: string) {
   }
 
   createProductDefinition(productDefinition: ProductDefinition): Observable<void> {

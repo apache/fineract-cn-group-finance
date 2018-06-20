@@ -19,7 +19,7 @@
 import {Inject, Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Error} from '../domain/error.model';
-import {HttpClient} from '../http/http.service';
+import {HttpClients} from '../http/http.service';
 import {Password} from './domain/password.model';
 import {UserWithPassword} from './domain/user-with-password.model';
 import {Role} from './domain/role.model';
@@ -36,7 +36,7 @@ export class IdentityService {
 
   private baseUrl: string = "http://163.172.130.175:8888/"
   
-  constructor(private http: HttpClient ) { // , @Inject('identityBaseUrl') private baseUrl: string) {
+  constructor(private http: HttpClients ) { // , @Inject('identityBaseUrl') private baseUrl: string) {
   }
 
   changePassword(id: string, password: Password): Observable<any> {

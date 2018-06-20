@@ -18,7 +18,7 @@
  */
 import {Injectable} from '@angular/core';
 import {Actions, Effect} from '@ngrx/effects';
-import {NotificationService, NotificationType} from '../../../sevices/notification/notification.service';
+import {NotificationService, NotificationType} from 'app/sevices/notification/notification.service';
 import {Observable} from 'rxjs/Observable';
 import {Action} from '@ngrx/store';
 import * as tellerActions from '../teller.actions';

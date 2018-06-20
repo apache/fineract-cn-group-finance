@@ -24,13 +24,13 @@ import {Observable} from 'rxjs/Observable';
 import {FetchRequest} from '../domain/paging/fetch-request.model';
 import {PayrollCollectionHistory} from './domain/payroll-collection-history.model';
 import {PayrollCollectionSheet} from './domain/payroll-collection-sheet.model';
-import {HttpClient} from '../http/http.service';
+import {HttpClients} from '../http/http.service';
 import {PayrollConfiguration} from './domain/payroll-configuration.model';
 
 @Injectable()
 export class PayrollService {
 
-  constructor(private http: HttpClient, @Inject('payrollBaseUrl') private baseUrl: string) {
+  constructor(private http: HttpClients, @Inject('payrollBaseUrl') private baseUrl: string) {
   }
 
   public distribute(sheet: PayrollCollectionSheet): Observable<void> {
