@@ -55,7 +55,7 @@ const initialState: SearchState = {
 };
 
 export const createSearchReducer = (entityName: string, reducer?: ActionReducer<SearchState>) => {
-  return function(state: SearchState = initialState, action: Action): SearchState {
+ /* return function(state: SearchState = initialState, action: Action): SearchState {
 
     switch (action.type) {
 
@@ -89,6 +89,7 @@ export const createSearchReducer = (entityName: string, reducer?: ActionReducer<
       }
     }
   };
+  */
 };
 
 export const getSearchEntities = (state: SearchState) => state.entities;

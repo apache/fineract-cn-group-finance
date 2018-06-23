@@ -22,11 +22,12 @@ import {Actions, Effect} from '@ngrx/effects';
 import {Observable} from 'rxjs/Observable';
 import {Action} from '@ngrx/store';
 import * as tellerActions from '../teller.actions';
+import {Teller} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/teller/domain/teller.model' 
 
 @Injectable()
 export class TellerRouteEffects {
 
-  @Effect({ dispatch: false })
+/*  @Effect({ dispatch: false })
   createTellerSuccess$: Observable<Action> = this.actions$
     .ofType(tellerActions.CREATE_TELLER_SUCCESS, tellerActions.UPDATE_TELLER_SUCCESS)
     .map(action => action.payload)
@@ -41,6 +42,8 @@ export class TellerRouteEffects {
     .do(payload => {
       this.router.navigate(['../'], { relativeTo: payload.activatedRoute });
     });
+
+    */
 
   constructor(private actions$: Actions, private router: Router) { }
 }

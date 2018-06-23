@@ -26,7 +26,7 @@ import {Router} from '@angular/router';
 @Injectable()
 export class OfficeRouteEffects {
 
-  @Effect({ dispatch: false })
+/*  @Effect({ dispatch: false })
   createOfficeSuccess$: Observable<Action> = this.actions$
     .ofType(officeActions.CREATE_SUCCESS)
     .map(action => action.payload)
@@ -57,4 +57,5 @@ export class OfficeRouteEffects {
     });
 
   constructor(private actions$: Actions, private router: Router) { }
+  */
 }

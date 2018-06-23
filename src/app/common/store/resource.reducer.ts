@@ -63,7 +63,7 @@ export const createResourceReducer =
 
     const identifier = (resource: any) => resource[identifierName];
 
-    return function (state: ResourceState = initialState, action: Action): ResourceState {
+/*    return function (state: ResourceState = initialState, action: Action): ResourceState {
 
       switch (action.type) {
 
@@ -152,6 +152,7 @@ export const createResourceReducer =
         }
       }
     };
+    */
   };
 
 export const getResourceEntities = (cacheState: ResourceState) => cacheState.entities;

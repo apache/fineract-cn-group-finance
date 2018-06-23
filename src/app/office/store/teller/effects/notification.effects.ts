@@ -42,7 +42,7 @@ export class TellerNotificationEffects {
       message: 'Teller is going to be updated'
     }));
 
-  @Effect({ dispatch: false })
+/*  @Effect({ dispatch: false })
   openCommandFail$: Observable<Action> = this.actions$
     .ofType(tellerActions.EXECUTE_COMMAND_FAIL)
     .map(action => action.payload.command)
@@ -65,6 +65,7 @@ export class TellerNotificationEffects {
         message: 'This teller requires a denomination before it can be closed.'
       })
     );
+    */
 
   constructor(private actions$: Actions, private notificationService: NotificationService) {
   }

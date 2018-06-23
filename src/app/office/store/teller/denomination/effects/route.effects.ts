@@ -26,13 +26,15 @@ import * as denominationActions from '../denomination.actions';
 @Injectable()
 export class TellerDenominationRouteEffects {
 
-  @Effect({ dispatch: false })
+ /* @Effect({ dispatch: false })
   createDenominationSuccess$: Observable<Action> = this.actions$
     .ofType(denominationActions.CREATE_DENOMINATION_SUCCESS)
     .map(action => action.payload)
     .do(payload => {
       this.router.navigate(['../'], { relativeTo: payload.activatedRoute });
     });
+
+    */
 
   constructor(private actions$: Actions, private router: Router) { }
 }
