@@ -22,7 +22,7 @@ import {Actions, Effect} from '@ngrx/effects';
 import {Observable} from 'rxjs/Observable';
 import {Action} from '@ngrx/store';
 import * as tellerActions from '../teller.actions';
-import {Teller} from '/home/pembe/Desktop/fineract-cn-web-app/src/app/sevices/teller/domain/teller.model' 
+import {Teller} from 'app/sevices/teller/domain/teller.model' 
 
 @Injectable()
 export class TellerRouteEffects {
