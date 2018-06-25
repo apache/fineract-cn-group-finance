@@ -1,0 +1,72 @@
+{
+  "/identity": {
+    "target": "http://163.172.130.175:2021",
+    "secure": false,
+    "pathRewrite": {
+      "/identity": "/identity"
+    }
+  },
+  "/api/office": {
+    "target": "http://163.172.130.175:2023",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/office": "/office"
+    }
+  },
+  "/api/customer": {
+    "target": "http://163.172.130.175:2024",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/customer": "/customer"
+    }
+  },
+  "/api/accounting": {
+    "target": "http://163.172.130.175:2025",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/accounting": "/accounting"
+    }
+  },
+  "/api/portfolio": {
+    "target": "http://163.172.130.175:2026",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/portfolio": "/portfolio"
+    }
+  },
+  "/api/deposit": {
+    "target": "http://163.172.130.175:2027",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/deposit": "/deposit"
+    }
+  },
+  "/api/teller": {
+    "target": "http://163.172.130.175:2028",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/teller": "/teller"
+    }
+  },
+  "/api/reporting": {
+    "target": "http://163.172.130.175:2029",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/reporting": "/reporting"
+    }
+  },
+  "/api/cheques": {
+    "target": "http://163.172.130.175:2030",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/cheques": "/cheques"
+    }
+  },
+  "/api/payroll": {
+    "target": "http://163.172.130.175:2031",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/payroll": "/payroll"
+    }
+  }
+}
