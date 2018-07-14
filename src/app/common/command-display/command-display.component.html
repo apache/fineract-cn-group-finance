@@ -1,0 +1,29 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<mat-list-item [ngSwitch]="command.action">
+  <mat-icon matListAvatar color="primary" *ngSwitchCase="'ACTIVATE'">check_circle</mat-icon>
+  <mat-icon matListAvatar color="primary" *ngSwitchCase="'LOCK'">lock</mat-icon>
+  <mat-icon matListAvatar color="primary" *ngSwitchCase="'CLOSE'">close</mat-icon>
+  <mat-icon matListAvatar color="primary" *ngSwitchCase="'UNLOCK'">lock_open</mat-icon>
+  <h3 matLine *ngSwitchCase="'ACTIVATE'" translate>ACTIVATE</h3>
+  <h3 matLine *ngSwitchCase="'LOCK'" translate>LOCK</h3>
+  <h3 matLine *ngSwitchCase="'CLOSE'" translate>CLOSE</h3>
+  <h3 matLine *ngSwitchCase="'UNLOCK'" translate>UNLOCK</h3>
+  <h4 matLine>{{command.createdBy}}, {{command.createdOn | date:'medium'}}</h4>
+  <p matLine>{{command.comment}}</p>
+</mat-list-item>

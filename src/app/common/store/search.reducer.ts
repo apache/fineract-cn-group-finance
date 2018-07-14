@@ -17,7 +17,7 @@
  * under the License.
  */
 import {Action, ActionReducer} from '@ngrx/store';
-import {FetchRequest} from '../../sevices/domain/paging/fetch-request.model';
+import {FetchRequest} from '../../services/domain/paging/fetch-request.model';
 import {createSelector} from 'reselect';
 
 export function emptySearchResult(): SearchResult {
@@ -55,7 +55,7 @@ const initialState: SearchState = {
 };
 
 export const createSearchReducer = (entityName: string, reducer?: ActionReducer<SearchState>) => {
- /* return function(state: SearchState = initialState, action: Action): SearchState {
+  return function(state: SearchState = initialState, action: Action): SearchState {
 
     switch (action.type) {
 
@@ -89,7 +89,6 @@ export const createSearchReducer = (entityName: string, reducer?: ActionReducer<
       }
     }
   };
-  */
 };
 
 export const getSearchEntities = (state: SearchState) => state.entities;

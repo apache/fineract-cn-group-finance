@@ -1,0 +1,67 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<td-steps mode="'vertical'">
+  <td-step #detailsStep label="{{'Product details' | translate}}" [state]="detailForm.valid ? 'complete' : detailForm.pristine ? 'none' : 'required'">
+    <fims-product-detail-form #detailForm [formData]="detailFormData" [currencies]="currencies" [temporalOptions]="temporalOptions" [error]="error" [editMode]="editMode"></fims-product-detail-form>
+    <ng-template td-step-actions>
+      <fims-form-continue-action (onContinue)="settingsStep.open()"></fims-form-continue-action>
+    </ng-template>
+  </td-step>
+  <td-step #settingsStep label="{{'Ledger and account settings' | translate}}" [state]="settingsForm.valid ? 'complete' : settingsForm.pristine ? 'none' : 'required'">
+    <fims-product-settings-form #settingsForm [formData]="settingsFormData"></fims-product-settings-form>
+    <ng-template td-step-actions>
+      <fims-form-continue-action (onContinue)="interestStep.open()"></fims-form-continue-action>
+    </ng-template>
+  </td-step>
+  <td-step #interestStep label="{{'Interest settings' | translate}}" [state]="interestForm.valid ? 'complete' : interestForm.pristine ? 'none' : 'required'">
+    <fims-product-interests-form #interestForm [formData]="interestFormData"></fims-product-interests-form>
+    <ng-template td-step-actions>
+      <fims-form-continue-action (onContinue)="feesStep.open()"></fims-form-continue-action>
+    </ng-template>
+  </td-step>
+  <td-step #feesStep label="{{'Fee income accounts' | translate}}" [state]="feeForm.valid ? 'complete' : feeForm.pristine ? 'none' : 'required'">
+    <fims-product-fee-form #feeForm [formData]="feeFormData"></fims-product-fee-form>
+    <ng-template td-step-actions>
+      <fims-form-continue-action (onContinue)="arrearsStep.open()"></fims-form-continue-action>
+    </ng-template>
+  </td-step>
+  <td-step #arrearsStep label="{{'Arrears allowance reserve account' | translate}}" [state]="arrearsAllowanceForm.valid ? 'complete' : arrearsAllowanceForm.pristine ? 'none' : 'required'">
+    <form [formGroup]="arrearsAllowanceForm">
+      <fims-account-select title="{{'Arrears allowance(Expense accounts only)' | translate}}" formControlName="account" [type]="'EXPENSE'">
+        <ng-container *ngIf="!arrearsAllowanceForm.get('account').pristine && arrearsAllowanceForm.get('account').hasError('required')" translate>
+          Required
+        </ng-container>
+        <ng-container *ngIf="arrearsAllowanceForm.get('account').hasError('invalidAccount')" translate>
+          Invalid account
+        </ng-container>
+      </fims-account-select>
+    </form>
+  </td-step>
+
+  <td-step label="{{'Final step' | translate}}" [state]="'complete'">
+    <ng-template td-step-summary>
+      <fims-form-final-action
+        [resourceName]="'PRODUCT'"
+        [editMode]="editMode"
+        [disabled]="!isValid"
+        (onCancel)="cancel()"
+        (onSave)="save()">
+      </fims-form-final-action>
+    </ng-template>
+  </td-step>
+</td-steps>

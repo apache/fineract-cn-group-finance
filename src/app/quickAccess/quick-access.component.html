@@ -1,0 +1,98 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<mat-toolbar>
+  <span translate>Quick access</span>
+</mat-toolbar>
+
+<div class="mat-content" flex mat-scroll-y>
+  <div layout="column" layout-gt-sm="row" class="inset">
+    <div flex-gt-sm="50" *hasPermission="{ id: 'office_offices', accessLevel: 'READ'}">
+      <mat-card>
+        <mat-card-title translate>Offices</mat-card-title>
+        <mat-card-subtitle translate>Create and edit your offices here.</mat-card-subtitle>
+        <mat-card-actions>
+          <a mat-button color="accent" class="text-upper" [routerLink]="['/offices']">
+            <span translate>View headquarter office</span>
+          </a>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <div flex-gt-sm="50" *hasPermission="{ id: 'office_employees', accessLevel: 'READ'}">
+      <mat-card>
+        <mat-card-title translate>Employees</mat-card-title>
+        <mat-card-subtitle translate>Create and edit your employees and assign them to offices.</mat-card-subtitle>
+        <mat-card-actions>
+          <a mat-button color="accent" class="text-upper" [routerLink]="['/employees']">
+            <span translate>View employees</span>
+          </a>
+          <a mat-button color="accent" class="text-upper" [routerLink]="['/employees/create']" *hasPermission="{ id: 'office_employees', accessLevel: 'CHANGE'}">
+            <span translate>Create new employee</span>
+          </a>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  <div layout="column" layout-gt-sm="row" class="inset">
+    <div flex-gt-sm="40" *hasPermission="{ id: 'customer_customers', accessLevel: 'READ'}">
+      <mat-card>
+        <mat-card-title translate>Member</mat-card-title>
+        <mat-card-subtitle translate>Create/edit members for your offices.</mat-card-subtitle>
+        <mat-card-actions>
+          <a mat-button color="accent" class="text-upper" [routerLink]="['/customers']">
+            <span translate>View member </span>
+          </a>
+          <a mat-button color="accent" class="text-upper" [routerLink]="['/customers/create']" *hasPermission="{ id: 'customer_customers', accessLevel: 'CHANGE'}">
+            <span translate>Create new member </span>
+          </a>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  <div layout="column" layout-gt-sm="row" class="inset">
+    <div flex-gt-sm="40" *hasPermission="{ id: 'accounting_ledgers', accessLevel: 'READ'}">
+      <mat-card>
+        <mat-card-title translate>Accounting</mat-card-title>
+        <mat-card-subtitle translate>Create/edit ledgers and accounts for your General Ledger.</mat-card-subtitle>
+        <mat-card-actions>
+          <a mat-button color="accent" class="text-upper" [routerLink]="['/accounting']">
+            <span translate>View General Ledger</span>
+          </a>
+          <a mat-button color="accent" class="text-upper" [routerLink]="['/accounting/create']" *hasPermission="{ id: 'accounting_ledgers', accessLevel: 'CHANGE'}">
+            <span translate>Create new ledger</span>
+          </a>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  <div layout="column" layout-gt-sm="row" class="inset">
+    <div flex-gt-sm="40" *hasPermission="{ id: 'identity_roles', accessLevel: 'READ'}">
+      <mat-card>
+        <mat-card-title translate>Roles</mat-card-title>
+        <mat-card-subtitle translate>Create and edit roles to manage access levels within fims.</mat-card-subtitle>
+        <mat-card-actions>
+          <a mat-button color="accent" class="text-upper" [routerLink]="['/roles']">
+            <span translate>View roles</span>
+          </a>
+          <a mat-button color="accent" class="text-upper" [routerLink]="['/roles/create']" *hasPermission="{ id: 'identity_roles', accessLevel: 'CHANGE'}">
+            <span translate>Create new role</span>
+          </a>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

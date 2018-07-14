@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {Authentication} from '../../../sevices/identity/domain/authentication.model';
+import {Authentication} from '../../../services/identity/domain/authentication.model';
 
 export function mockAuthentication(): Authentication {
   return {

@@ -1,0 +1,69 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<fims-layout-card-over title="{{'Planned payments' | translate}}" [navigateBackTo]="['../']">
+  <div layout="row" layout-margin>
+    <mat-form-field layout-margin>
+      <input matInput type="date" placeholder="{{'Start date' | translate}}" [(ngModel)]="startDate">
+    </mat-form-field>
+    <span>
+      <button layout-margin mat-button mat-icon-button (click)="fetchPayments(startDate)"><mat-icon>search</mat-icon></button>
+    </span>
+  </div>
+  <div layout="row" class="mat-content">
+    <table td-data-table>
+      <thead>
+        <tr td-data-table-column-row>
+          <th td-data-table-column [active]="true" translate>
+            Date
+          </th>
+          <th td-data-table-column [active]="true" [numeric]="true" translate>
+            Payment
+          </th>
+          <th td-data-table-column [active]="true" [numeric]="true" translate>
+            Interest
+          </th>
+          <th td-data-table-column [active]="true" [numeric]="true" translate>
+            Principal
+          </th>
+          <th td-data-table-column [active]="true" [numeric]="true" translate>
+            Balance
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr td-data-table-row *ngFor="let row of (rows | async)">
+          <td td-data-table-cell>
+            {{row.date | date}}
+          </td>
+          <td td-data-table-cell [numeric]="true">
+            {{row.payment | number}}
+          </td>
+          <td td-data-table-cell [numeric]="true">
+            {{row.interest | number}}
+          </td>
+          <td td-data-table-cell [numeric]="true">
+            {{row.principal | number}}
+          </td>
+          <td td-data-table-cell [numeric]="true">
+            {{row.balance | number}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</fims-layout-card-over>

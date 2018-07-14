@@ -22,9 +22,9 @@ import {Observable} from 'rxjs/Observable';
 import {Action} from '@ngrx/store';
 import {of} from 'rxjs/observable/of';
 import * as roleActions from '../role.actions';
-import {IdentityService} from '../../../sevices/identity/identity.service';
+import {IdentityService} from '../../../services/identity/identity.service';
 import {emptySearchResult} from '../../../common/store/search.reducer';
-import {Role} from '../../../sevices/identity/domain/role.model';
+import {Role} from '../../../services/identity/domain/role.model';
 
 const SYSTEM_ROLES: string[] = ['pharaoh', 'scheduler'];
 

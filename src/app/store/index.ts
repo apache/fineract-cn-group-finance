@@ -23,7 +23,7 @@ import * as fromAuthentication from './security/authentication.reducer';
 import * as fromAuthorization from './security/authorization.reducer';
 import * as fromAccounts from './account/accounts.reducer';
 import * as authenticationActions from './security/security.actions';
-import {compose} from '@ngrx/store';
+import {compose} from '@ngrx/core/compose';
 import {localStorageSync} from 'ngrx-store-localstorage';
 import {
   createSearchReducer,

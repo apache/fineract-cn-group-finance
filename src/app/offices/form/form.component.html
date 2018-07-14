@@ -1,0 +1,45 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<td-steps mode="'vertical'">
+  <td-step #detailsStep label="{{'Office details' | translate}}"
+           [state]="detailForm.valid ? 'complete' : detailForm.pristine ? 'none' : 'required'">
+    <form [formGroup]="detailForm" layout="column">
+      <fims-id-input [form]="detailForm" controlName="identifier" [readonly]="editMode"></fims-id-input>
+      <fims-text-input [form]="detailForm" controlName="name" placeholder="{{'Name' | translate}}"></fims-text-input>
+      <fims-text-input [form]="detailForm" controlName="description" placeholder="{{'Description(optional)' | translate}}"></fims-text-input>
+    </form>
+    <ng-template td-step-actions>
+      <fims-form-continue-action (onContinue)="addressStep.open()"></fims-form-continue-action>
+    </ng-template>
+  </td-step>
+  <td-step #addressStep label="{{'Office Address(optional)' | translate}}"
+           [state]="addressForm.valid ? 'complete' : addressForm.pristine ? 'none' : 'required'">
+    <fims-address-form #addressForm [formData]="addressFormData"></fims-address-form>
+  </td-step>
+  <td-step label="{{'Final step' | translate}}" [state]="'complete'" class="disable-pointer">
+    <ng-template td-step-summary>
+      <fims-form-final-action
+        [resourceName]="'OFFICE'"
+        [editMode]="editMode"
+        [disabled]="formsInvalid()"
+        (onCancel)="cancel()"
+        (onSave)="save()" flex>
+      </fims-form-final-action>
+    </ng-template>
+  </td-step>
+</td-steps>

@@ -1,0 +1,56 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<fims-layout-card-over *ngIf="customer$ | async as customer" title="{{customer.givenName}} {{customer.surname}}" [navigateBackTo]="['../../../../']">
+  <fims-two-column-layout>
+    <ng-container left>
+      <fims-portrait [blob]="portrait$ | async"></fims-portrait>
+      <mat-nav-list>
+        <h3 mat-subheader translate>Transactions</h3>
+        <ng-template let-item let-last="last" ngFor [ngForOf]="availableActions$ | async">
+          <a mat-list-item [routerLink]="[item.relativeLink]" [queryParams]="{ transactionType: item.transactionType }">
+            <mat-icon matListAvatar>{{item.icon}}</mat-icon>
+            <h3 matLine translate>{{item.title}}</h3>
+          </a>
+        </ng-template>
+      </mat-nav-list>
+    </ng-container>
+    <mat-list right>
+      <h3 mat-subheader translate>Address</h3>
+      <mat-list-item>
+        <mat-icon matListAvatar>location_on</mat-icon>
+        <h3 matLine>{{customer.address?.street}}, {{customer.address?.city}}, {{customer.address?.postalCode}},
+          {{customer.address?.country}}</h3>
+      </mat-list-item>
+      <h3 mat-subheader translate>Contact information</h3>
+      <mat-list-item [ngSwitch]="detail.type" *ngFor="let detail of customer.contactDetails">
+        <mat-icon *ngSwitchCase="'EMAIL'" matListAvatar>email</mat-icon>
+        <mat-icon *ngSwitchCase="'PHONE'" matListAvatar>phone</mat-icon>
+        <mat-icon *ngSwitchCase="'MOBILE'" matListAvatar>smartphone</mat-icon>
+        <h3 matLine>{{detail.value}}</h3>
+      </mat-list-item>
+      <mat-list-item *ngIf="!customer.contactDetails?.length">
+        <h3 matLine translate>No contact details available</h3>
+      </mat-list-item>
+      <h3 mat-subheader translate>Birthday</h3>
+      <mat-list-item>
+        <mat-icon matListAvatar>cake</mat-icon>
+        <h3 matLine>{{customer.dateOfBirth | displayFimsDate}}</h3>
+      </mat-list-item>
+    </mat-list>
+  </fims-two-column-layout>
+</fims-layout-card-over>

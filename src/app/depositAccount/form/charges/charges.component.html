@@ -1,0 +1,58 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<form [formGroup]="form">
+  <div layout-gt-xs="column" layout-margin formArrayName="charges">
+    <mat-card *ngFor="let charge of charges; let i=index" [formGroupName]="i">
+      <mat-card-content layout="column">
+        <fims-text-input [form]="charge" controlName="name" placeholder="{{'Fee name' | translate}}"></fims-text-input>
+        <mat-form-field layout-margin flex>
+          <textarea matInput placeholder="{{'Description' | translate}}" formControlName="description"></textarea>
+          <mat-error *ngIf="charge.get('description').hasError('maxlength')">
+            {{ 'Only characters allowed.' | translate:{ value: charge.get('description').getError('maxlength')['requiredLength']} }}
+          </mat-error>
+        </mat-form-field>
+        <div layout="row">
+          <fims-number-input [form]="getFormGroup(i)" controlName="amount" placeholder="{{'Amount' | translate}}"></fims-number-input>
+          <mat-form-field layout-margin>
+            <mat-select formControlName="actionIdentifier" placeholder="{{'Applied on' | translate}}">
+              <mat-option *ngFor="let basis of actions" [value]="basis.identifier">
+                {{basis.name | translate}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-checkbox layout-margin formControlName="proportional" translate>Proportional?</mat-checkbox>
+        </div>
+        <fims-account-select title="{{'Income account' | translate}}" formControlName="incomeAccountIdentifier" [type]="'REVENUE'">
+          <ng-container *ngIf="!charge.get('incomeAccountIdentifier').pristine && charge.get('incomeAccountIdentifier').hasError('required')" translate>
+            Required
+          </ng-container>
+          <ng-container *ngIf="charge.get('incomeAccountIdentifier').hasError('invalidAccount')" translate>
+            Invalid account
+          </ng-container>
+        </fims-account-select>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="removeCharge(i)">{{'REMOVE FEE' | translate}}</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <div layout="row">
+      <button flex mat-button mat-raised-button (click)="addCharge()">{{'ADD FEE' | translate}}</button>
+    </div>
+  </div>
+</form>

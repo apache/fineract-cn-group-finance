@@ -17,7 +17,7 @@
  * under the License.
  */
 import {Action, ActionReducer} from '@ngrx/store';
-import {Error} from '../../sevices/domain/error.model';
+import {Error} from '../../services/domain/error.model';
 
 export interface FormState {
   error?: Error;
@@ -34,7 +34,7 @@ export const createFormReducer = (resource: string, reducer?: ActionReducer<Form
       case `[${resource}] Create Fail`:
       case `[${resource}] Update Fail`: {
         return Object.assign({}, state, {
-         // error: action.payload
+          error: action.payload
         });
       }
 

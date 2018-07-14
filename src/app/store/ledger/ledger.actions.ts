@@ -19,7 +19,7 @@
 
 import {type} from '../util';
 import {Action} from '@ngrx/store';
-import {FetchRequest} from '../../sevices/domain/paging/fetch-request.model';
+import {FetchRequest} from '../../services/domain/paging/fetch-request.model';
 import {SearchResult} from '../../common/store/search.reducer';
 
 export const SEARCH = type('[Ledger] Search');

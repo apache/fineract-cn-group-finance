@@ -1,0 +1,140 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+  <div class="flex-container" fullscreen>
+      <mat-progress-bar *ngIf="isLoading$ | async" mode="indeterminate"></mat-progress-bar>
+  <mat-toolbar class="my-toolbar">
+    <div>
+      <div class="search2">
+    <ul id="menu" class="menu1">
+      <li>
+        <button mat-icon-button (click)="sidenav.toggle()" class="dropdown-button">
+          <mat-icon class="fineract-toolicon">menu</mat-icon>
+        </button>
+      </li>
+      <li>
+        
+        <span style="color:purple">{{tenant$ | async}}</span>
+      </li>
+      <li>
+       
+        <button mat-button [matMenuTriggerFor]="client" class="dropdown-button"> 
+          <mat-icon>group</mat-icon>Clients
+          <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #client="matMenu">
+          <a mat-menu-item [routerLink]="['/customers']">Client</a>
+          <a mat-menu-item [routerLink]="['/']">Group</a>
+          <a mat-menu-item [routerLink]="['/']">Center</a>
+        </mat-menu>
+      </li>
+      <li>
+        <button mat-button  [routerLink]="['/accounting']"  class="dropdown-button">Accounting
+        </button>
+      </li>
+      <li>
+        <button mat-button [matMenuTriggerFor]="report" class="dropdown-button">Reports
+          <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #report="matMenu">
+          <a mat-menu-item [routerLink]="['/reporting']">Member</a>
+          <a mat-menu-item [routerLink]="['/reporting/deposits']">Deposit</a>
+         
+        </mat-menu>
+      </li>
+      <li>
+       
+        <button mat-button [matMenuTriggerFor]="admin" class="dropdown-button">
+           <mat-icon>build</mat-icon>Admin
+          <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #admin="matMenu">
+          <button mat-menu-item [routerLink]="['/employees']">Users</button>
+          <button mat-menu-item [routerLink]="['/teller']">Teller</button>
+          <button mat-menu-item [routerLink]="['/roles']">Roles/Permissions</button>
+          <button mat-menu-item [routerLink]="['/navbar/admin/products']">Products</button>
+          
+        </mat-menu>
+      </li>
+  
+    </ul>
+    </div>
+    <div class="search1">
+    <ul id="menu">
+      <li>
+        <input matInput placeholder="click or press alt + X to Search" type="text" class="fineract-toolsearch">
+      </li>
+     
+      <li class="dropdown-button">
+        <button mat-icon-button [routerLink]="['/navbar/notification']">
+          <mat-icon>notifications</mat-icon>
+        </button>
+      </li>
+      <li>
+        <button mat-button [matMenuTriggerFor]="mifos" class="dropdown-button">Fineract CN
+          <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #mifos="matMenu">
+            <button mat-menu-item [disabled]="true">
+                <mat-icon>account_circle</mat-icon>
+                <span>{{username$ | async}}</span>
+              </button>
+              <hr>
+              <button mat-menu-item (click)="goToSettings()">
+                <mat-icon>settings</mat-icon>
+                <span>{{'Settings' | translate}}</span>
+              </button>
+              <button mat-menu-item (click)="logout()">
+                <mat-icon>exit_to_app</mat-icon>
+                <span>{{'Sign Out' | translate}}</span>
+              </button>
+        </mat-menu>
+      </li>
+    </ul>
+    </div>
+    </div>
+  </mat-toolbar>
+  </div>
+  
+  <mat-sidenav-container class="app-container" style="background-image:url('assets/Background.png');">
+    <mat-sidenav #sidenav class="app-sidenav mat-elevation-z2" mode="side" opened="true">
+     
+      <mat-nav-list>
+          <ng-container *ngFor="let menuItem of menuItems; let i = index">
+            <a mat-list-item [routerLink]="[menuItem.routerLink]" routerLinkActive="active" *hasPermission="menuItem.permission">
+              <mat-icon matListAvatar>{{menuItem.icon}}</mat-icon>
+              <h3 matLine>{{menuItem.title | translate}}</h3>
+              <p matLine>{{menuItem.description | translate}}</p>
+            </a>
+            <mat-divider *ngIf="i === 0"></mat-divider>
+          </ng-container>
+        </mat-nav-list>
+  
+    </mat-sidenav>
+    <div class="app-sidenav-content">
+      <div class="wrapper" >
+        <router-outlet></router-outlet>
+      </div>
+  
+    </div>
+    <fims-notification></fims-notification>
+  </mat-sidenav-container>
+ 
+  
+  
+  
+  
