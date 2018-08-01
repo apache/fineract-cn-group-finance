@@ -16,24 +16,18 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {ContactDetail} from '../../domain/contact/contact-detail.model';
+import {Injectable} from '@angular/core';
+import {ActivatedRouteSnapshot, Resolve} from '@angular/router';
+import {Observable} from 'rxjs/Observable';
+import {IdentityService} from '../services/identity/identity.service';
+import {User} from '../services/identity/domain/user.model';
 
-export interface Employee {
-  identifier: string;
-  givenName: string;
-  middleName?: string;
-  surname: string;
-  assignedOffice?: string;
-  contactDetails: ContactDetail[];
+@Injectable()
+export class UserResolver implements Resolve<User> {
+
+  constructor(private identityService: IdentityService) {}
+
+  resolve(route: ActivatedRouteSnapshot): Observable<User> {
+    return this.identityService.getUser(route.params['id']);
+  }
 }
-
-export interface Center {
-  identifier: string;
-  givenName: string;
-  middleName?: string;
-  surname: string;
-  assignedOffice?: string;
-  contactDetails: ContactDetail[];
-}
-
-

@@ -122,6 +122,15 @@ export class MainComponent implements OnInit, OnDestroy, AfterViewInit {
       permission: {id: 'accounting_ledgers', accessLevel: 'READ'}
 
     },
+    {
+      title: 'Centers',
+      description: 'View centers',
+      icon: 'event_note',
+      routerLink: '/centers',
+      permission: {id: 'office_employees', accessLevel: 'READ'}
+
+    },
+   
   ];
 
   isLoading$: Observable<boolean>;

@@ -30,3 +30,4 @@ export type PermissionId = 'identity_self' | 'identity_identities' | 'identity_r
   'reporting_management' |
   'cheque_management' | 'cheque_transaction' |
   'payroll_configuration' | 'payroll_distribution';
+ 
