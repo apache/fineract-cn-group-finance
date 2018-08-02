@@ -1,0 +1,134 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<td-steps mode="'vertical'">
+  <td-step #detailsStep label="{{'Product details' | translate}}" [state]="formGroup.valid ? 'complete' : formGroup.pristine ? 'none' : 'required'">
+    <form [formGroup]="formGroup" layout="column">
+      <div layout="row">
+        <mat-radio-group formControlName="type">
+          <mat-radio-button *ngFor="let basis of typeOptions" [value]="basis.type" layout-margin>
+            {{ basis.label | translate }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div layout="row">
+        <fims-id-input placeholder="Short name" [form]="formGroup" controlName="identifier" [readonly]="editMode"></fims-id-input>
+      </div>
+      <div layout="row">
+        <fims-text-input [form]="formGroup" controlName="name" placeholder="{{'Name' | translate}}"></fims-text-input>
+      </div>
+      <div layout="row">
+        <mat-form-field layout-margin flex>
+          <textarea matInput placeholder="{{'Description(optional)' | translate}}" formControlName="description"></textarea>
+          <mat-error *ngIf="formGroup.get('description').hasError('maxlength')">
+            {{ 'Only characters allowed.' | translate:{ value: formGroup.get('description').getError('maxlength')['requiredLength']} }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div layout="row">
+        <mat-form-field layout-margin>
+          <mat-select formControlName="currencyCode" placeholder="{{ 'Currency' | translate }}">
+            <mat-option *ngFor="let currency of currencies" [value]="currency.code">
+              {{currency.code}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div layout="row">
+        <fims-number-input [form]="formGroup" controlName="minimumBalance" placeholder="{{'Minimum balance' | translate}}"></fims-number-input>
+      </div>
+      <div layout="column">
+        <span translate>Interest payable:</span>
+        <mat-radio-group formControlName="termInterestPayable">
+          <mat-radio-button *ngFor="let basis of interestPayableOptions" [value]="basis.type" layout-margin>
+            {{ basis.label | translate }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div layout="row" layout-margin>
+        <mat-checkbox formControlName="flexible" [disabled]="editMode" translate>Flexible interest during the term?</mat-checkbox>
+      </div>
+      <div layout="row">
+        <fims-number-input [form]="formGroup" controlName="interest" placeholder="{{'Interest' | translate}}"></fims-number-input>
+      </div>
+      <div layout="row">
+        <mat-slide-toggle formControlName="fixedTermEnabled" layout-margin translate>
+          Fixed term?
+        </mat-slide-toggle>
+      </div>
+      <div layout="row">
+        <fims-text-input type="number" [form]="formGroup" controlName="termPeriod" placeholder="{{'Term period' | translate}}"></fims-text-input>
+        <mat-radio-group formControlName="termTimeUnit">
+          <mat-radio-button *ngFor="let basis of timeUnitOptions" [value]="basis.type" layout-margin>
+            {{ basis.label | translate }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <fims-account-select title="{{'Cash account(Asset accounts only)' | translate}}" formControlName="cashAccountIdentifier" [type]="'ASSET'">
+        <ng-container *ngIf="!formGroup.get('cashAccountIdentifier').pristine && formGroup.get('cashAccountIdentifier').hasError('required')" translate>
+          Required
+        </ng-container>
+        <ng-container *ngIf="formGroup.get('cashAccountIdentifier').hasError('invalidAccount')" translate>
+          Invalid account
+        </ng-container>
+      </fims-account-select>
+      <fims-account-select title="{{'Expense account(Expense accounts only)' | translate}}" formControlName="expenseAccountIdentifier" [type]="'EXPENSE'">
+        <ng-container *ngIf="!formGroup.get('expenseAccountIdentifier').pristine && formGroup.get('expenseAccountIdentifier').hasError('required')" translate>
+          Required
+        </ng-container>
+        <ng-container *ngIf="formGroup.get('expenseAccountIdentifier').hasError('invalidAccount')" translate>
+          Invalid account
+        </ng-container>
+      </fims-account-select>
+      <fims-account-select title="{{'Accrue account(Liability accounts only)' | translate}}" formControlName="accrueAccountIdentifier" [type]="'LIABILITY'" *ngIf="formGroup.get('accrueAccountIdentifier').status !== 'DISABLED'">
+        <ng-container *ngIf="!formGroup.get('accrueAccountIdentifier').pristine && formGroup.get('accrueAccountIdentifier').hasError('required')" translate>
+          Required
+        </ng-container>
+        <ng-container *ngIf="formGroup.get('accrueAccountIdentifier').hasError('invalidAccount')" translate>
+          Invalid account
+        </ng-container>
+      </fims-account-select>
+      <fims-ledger-select title="{{'Equity ledger(Equity ledgers only)' | translate}}" formControlName="equityLedgerIdentifier" [type]="'EQUITY'">
+        <ng-container *ngIf="!formGroup.get('equityLedgerIdentifier').pristine && formGroup.get('equityLedgerIdentifier').hasError('required')" translate>
+          Required
+        </ng-container>
+        <ng-container *ngIf="formGroup.get('equityLedgerIdentifier').hasError('invalidLedger')" translate>
+          Invalid ledger
+        </ng-container>
+      </fims-ledger-select>
+    </form>
+    <ng-template td-step-actions>
+      <fims-form-continue-action (onContinue)="chargesStep.open()"></fims-form-continue-action>
+    </ng-template>
+  </td-step>
+
+  <td-step #chargesStep label="{{'Fees' | translate}}" [state]="chargesForm.valid ? 'complete' : chargesForm.pristine ? 'none' : 'required'">
+    <fims-deposit-product-charges-form #chargesForm [actions]="actions" [formData]="charges"></fims-deposit-product-charges-form>
+  </td-step>
+
+  <td-step label="{{'Final step' | translate}}" [state]="'complete'">
+    <ng-template td-step-summary>
+      <fims-form-final-action
+        [resourceName]="'PRODUCT'"
+        [editMode]="editMode"
+        [disabled]="!isValid"
+        (onCancel)="cancel()"
+        (onSave)="save()">
+      </fims-form-final-action>
+    </ng-template>
+  </td-step>
+</td-steps>

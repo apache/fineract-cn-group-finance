@@ -1,0 +1,89 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<td-steps mode="'vertical'">
+  <td-step #detailsStep label="{{'Employee details' | translate}}" [state]="detailForm.valid ? 'complete' : detailForm.pristine ? 'none' : 'required'">
+    <form [formGroup]="detailForm" layout="column">
+      <fims-id-input [form]="detailForm" placeholder="Username" controlName="identifier" [readonly]="editMode"></fims-id-input>
+      <fims-text-input [form]="detailForm" controlName="firstName" placeholder="{{'First name' | translate}}"></fims-text-input>
+      <fims-text-input [form]="detailForm" controlName="middleName" placeholder="{{'Middle name(optional)' | translate}}"></fims-text-input>
+      <fims-text-input [form]="detailForm" controlName="lastName" placeholder="{{'Last name' | translate}}"></fims-text-input>
+      <mat-form-field layout-margin>
+        <mat-select formControlName="role" placeholder="{{ 'Role' | translate }}">
+          <mat-option *ngFor="let role of roles | async" [value]="role.identifier">
+            {{ role.identifier }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="detailForm.get('role').hasError('required')" translate>Required</mat-error>
+      </mat-form-field>
+      <div layout="row">
+        <mat-form-field layout-margin flex>
+          <input matInput placeholder="{{'Password' | translate}}" type="password" formControlName="password" autocomplete="new-password" tdAutoTrim/>
+          <mat-error *ngIf="detailForm.get('password').hasError('required')" translate>
+            Required
+          </mat-error>
+          <mat-error *ngIf="detailForm.get('password').hasError('minlength')">
+            {{ 'Must have at least characters.' | translate:{ value: detailForm.get('password').getError('minlength')['requiredLength']} }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </form>
+    <ng-template td-step-actions>
+      <fims-form-continue-action (onContinue)="officeStep.open()"></fims-form-continue-action>
+    </ng-template>
+  </td-step>
+
+  <td-step #officeStep label="{{'Assign employee to office(optional)' | translate}}"
+           [state]="officeForm.get('assignedOffice').value ? 'complete' : 'none'">
+
+    <fims-select-list #officeList flex
+                        [data]="offices"
+                        id="identifier"
+                        listIcon="store"
+                        [preSelection]="officeForm.get('assignedOffice').value ? [officeForm.get('assignedOffice').value] : []"
+                        (onSearch)="searchOffice($event)"
+                        (onSelectionChange)="assignOffice($event)"
+                        title="{{'Assigned Office' | translate}}"
+                        noResultsMessage="{{'No office was found.' | translate}}"
+                        noSelectionMessage="{{'No office assigned to employee, yet.' | translate}}">
+    </fims-select-list>
+    <ng-template td-step-actions>
+      <fims-form-continue-action (onContinue)="contactStep.open()"></fims-form-continue-action>
+    </ng-template>
+  </td-step>
+
+  <td-step #contactStep label="{{'Employee contact(optional)' | translate}}" [state]="contactForm.valid && !contactForm.pristine ? 'complete' : contactForm.pristine ? 'none' : 'required'">
+    <form [formGroup]="contactForm" layout="column">
+      <fims-text-input [form]="contactForm" controlName="email" placeholder="{{'Email(optional)' | translate}}" type="email"></fims-text-input>
+      <fims-text-input [form]="contactForm" controlName="phone" placeholder="{{'Phone(optional)' | translate}}" type="tel"></fims-text-input>
+      <fims-text-input [form]="contactForm" controlName="mobile" placeholder="{{'Mobile(optional)' | translate}}" type="tel"></fims-text-input>
+    </form>
+  </td-step>
+
+  <td-step label="{{'Final step' | translate}}" [state]="'complete'">
+    <ng-template td-step-summary>
+      <fims-form-final-action
+        [resourceName]="'EMPLOYEE'"
+        [editMode]="editMode"
+        [disabled]="formsInvalid()"
+        (onCancel)="cancel()"
+        (onSave)="save()">
+      </fims-form-final-action>
+    </ng-template>
+  </td-step>
+
+</td-steps>

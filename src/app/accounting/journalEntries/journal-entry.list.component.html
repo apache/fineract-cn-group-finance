@@ -1,0 +1,96 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<fims-layout-card-over title="{{'Journal entries' | translate}}" [navigateBackTo]="['../']">
+  <form [formGroup]="form" layout="row">
+    <mat-form-field layout-margin>
+      <input matInput type="date" placeholder="{{'Start date' | translate}}" formControlName="startDate">
+    </mat-form-field>
+    <mat-form-field layout-margin>
+      <input matInput type="date" placeholder="{{'End date' | translate}}" formControlName="endDate">
+      <mat-error *ngIf="form.hasError('rangeInvalid')" translate>Invalid date range</mat-error>
+    </mat-form-field>
+    <fims-text-input [form]="form" controlName="account" placeholder="{{'Account' | translate}}"></fims-text-input>
+    <fims-text-input type="number" [form]="form" controlName="amount" placeholder="{{'Amount' | translate}}"></fims-text-input>
+    <span>
+      <button layout-margin mat-button mat-icon-button (click)="fetchJournalEntries()" [disabled]="!form.valid"><mat-icon>search</mat-icon></button>
+    </span>
+  </form>
+  <fims-two-column-layout>
+    <mat-nav-list left>
+      <a mat-list-item *ngFor="let entry of (journalEntries$ | async)" (click)="select(entry)" [ngClass]="journalEntry == entry ? 'active' : false">
+        <mat-icon matListAvatar>assignment</mat-icon>
+        <h4 matLine translate>{{entry.transactionDate | date:'short'}}</h4>
+        <p matLine translate>{{entry.transactionType}}</p>
+        <p matLine translate>Amount: {{sumDebtors(entry.debtors) | number:numberFormat}}</p>
+        <ng-container [ngSwitch]="entry.state">
+          <mat-icon class="tc-amber-800" *ngSwitchCase="'PENDING'">more_horiz</mat-icon>
+          <mat-icon class="tc-green-800" *ngSwitchCase="'PROCESSED'">done</mat-icon>
+        </ng-container>
+      </a>
+    </mat-nav-list>
+    <mat-card right *ngIf="journalEntry">
+      <mat-list>
+        <mat-list-item>
+          <h3 matLine translate>Clerk</h3>
+          <p matLine>{{journalEntry?.clerk}}</p>
+        </mat-list-item>
+        <mat-list-item>
+          <h3 matLine translate>Message</h3>
+          <p matLine>{{journalEntry?.message}}</p>
+        </mat-list-item>
+        <mat-list-item>
+          <h3 matLine translate>Note</h3>
+          <p matLine>{{journalEntry?.note}}</p>
+        </mat-list-item>
+      </mat-list>
+      <div class="mat-content">
+        <table td-data-table>
+          <thead>
+            <tr td-data-table-column-row>
+              <th td-data-table-column translate>
+                Debit
+              </th>
+              <th td-data-table-column translate>
+                Credit
+              </th>
+              <th td-data-table-column translate>
+                Amount
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr td-data-table-row *ngFor="let debit of journalEntry?.debtors">
+              <td td-data-table-cell>
+                {{debit.accountNumber}}
+              </td>
+              <td td-data-table-cell></td>
+              <td td-data-table-cell>{{debit.amount | number:numberFormat}}</td>
+            </tr>
+            <tr td-data-table-row *ngFor="let credit of journalEntry?.creditors">
+              <td td-data-table-cell></td>
+              <td td-data-table-cell>{{credit.accountNumber}}</td>
+              <td td-data-table-cell>{{credit.amount | number:numberFormat}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </mat-card>
+  </fims-two-column-layout>
+
+</fims-layout-card-over>
+<fims-fab-button title="{{'Add Journal Entry' | translate}}" icon="add" [link]="['create']" [permission]="{ id: 'accounting_journals', accessLevel: 'CHANGE'}"></fims-fab-button>

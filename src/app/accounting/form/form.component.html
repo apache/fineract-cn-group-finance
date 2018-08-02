@@ -1,0 +1,47 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<td-steps mode="'vertical'">
+  <td-step #detailsStep label="{{'Ledger details' | translate}}"
+           [state]="form.valid ? 'complete' : form.pristine ? 'none' : 'required'">
+    <form [formGroup]="form" layout="column">
+      <fims-id-input flex [form]="form" placeholder="Ledger Number" controlName="identifier" [readonly]="editMode"></fims-id-input>
+      <mat-radio-group formControlName="type">
+        <mat-radio-button *ngFor="let type of accountTypeOptions" [value]="type.type" layout-margin>
+          {{type.label}}
+        </mat-radio-button>
+      </mat-radio-group>
+      <fims-text-input [form]="form" controlName="name" placeholder="{{'Name' | translate}}"></fims-text-input>
+      <mat-form-field layout-margin flex>
+        <textarea matInput placeholder="{{'Description(Optional)' | translate}}" formControlName="description"></textarea>
+        <mat-error *ngIf="form.get('description').hasError('maxlength')">
+          {{ 'Only characters allowed.' | translate:{ value: form.get('description').getError('maxlength')['requiredLength']} }}
+        </mat-error>
+      </mat-form-field>
+      <mat-checkbox formControlName="showAccountsInChart" layout-margin translate>Show accounts when displayed in chart?</mat-checkbox>
+    </form>
+    <ng-template td-step-actions>
+      <fims-form-final-action
+        [resourceName]="'LEDGER'"
+        [editMode]="editMode"
+        [disabled]="!form.valid"
+        (onCancel)="cancel()"
+        (onSave)="save()">
+      </fims-form-final-action>
+    </ng-template>
+  </td-step>
+</td-steps>

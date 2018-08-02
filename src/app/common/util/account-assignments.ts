@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {AccountAssignment} from '../../sevices/portfolio/domain/account-assignment.model';
+import {AccountAssignment} from '../../services/portfolio/domain/account-assignment.model';
 
 export function findAccountDesignator(accountAssignments: AccountAssignment[], designator: string): AccountAssignment {
   return accountAssignments.find(assignment => assignment.designator === designator);

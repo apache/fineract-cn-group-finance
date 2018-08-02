@@ -1,0 +1,78 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<td-steps mode="'vertical'">
+  <td-step #detailsStep label="{{'Teller details' | translate}}"
+           [state]="form.valid ? 'complete' : form.pristine ? 'none' : 'required'">
+    <form [formGroup]="form" layout="column">
+      <fims-id-input [form]="form" [placeholder]="'Number'" controlName="code" [readonly]="editMode"></fims-id-input>
+      <mat-form-field layout-margin flex>
+        <input matInput type="password" placeholder="{{'Password' | translate}}" formControlName="password" tdAutoTrim autocomplete="new-password"/>
+        <mat-error *ngIf="form.get('password').hasError('required')" translate>Required</mat-error>
+        <mat-error *ngIf="form.get('password').hasError('minlength')">
+          {{ 'Must have at least characters.' | translate:{ value: form.get('password').getError('minlength')['requiredLength']} }}
+        </mat-error>
+        <mat-error *ngIf="form.get('password').hasError('maxlength')">
+          {{ 'Only characters allowed.' | translate:{ value: form.get('password').getError('maxlength')['requiredLength']} }}
+        </mat-error>
+      </mat-form-field>
+      <fims-text-input type="number" [form]="form" controlName="cashdrawLimit" placeholder="{{'Cash withdrawal limit' | translate}}"></fims-text-input>
+      <fims-account-select title="{{'Teller account(Asset accounts only)' | translate}}" formControlName="tellerAccountIdentifier" [type]="'ASSET'">
+        <ng-container *ngIf="!form.get('tellerAccountIdentifier').pristine && form.get('tellerAccountIdentifier').hasError('required')" translate>
+          Required
+        </ng-container>
+        <ng-container *ngIf="form.get('tellerAccountIdentifier').hasError('invalidAccount')" translate>
+          Invalid account
+        </ng-container>
+      </fims-account-select>
+      <fims-account-select title="{{'Vault account(Asset accounts only)' | translate}}" formControlName="vaultAccountIdentifier" [type]="'ASSET'">
+        <ng-container *ngIf="!form.get('vaultAccountIdentifier').pristine && form.get('vaultAccountIdentifier').hasError('required')" translate>
+          Required
+        </ng-container>
+        <ng-container *ngIf="form.get('vaultAccountIdentifier').hasError('invalidAccount')" translate>
+          Invalid account
+        </ng-container>
+      </fims-account-select>
+      <fims-account-select title="{{'Cheques receivable account(Asset accounts only)' | translate}}" formControlName="chequesReceivableAccount" [type]="'ASSET'">
+        <ng-container *ngIf="!form.get('chequesReceivableAccount').pristine && form.get('chequesReceivableAccount').hasError('required')" translate>
+          Required
+        </ng-container>
+        <ng-container *ngIf="form.get('chequesReceivableAccount').hasError('invalidAccount')" translate>
+          Invalid account
+        </ng-container>
+      </fims-account-select>
+      <fims-account-select title="{{'Cash over short account(Expense accounts only)' | translate}}" formControlName="cashOverShortAccount" [type]="'EXPENSE'">
+        <ng-container *ngIf="!form.get('cashOverShortAccount').pristine && form.get('cashOverShortAccount').hasError('required')" translate>
+          Required
+        </ng-container>
+        <ng-container *ngIf="form.get('cashOverShortAccount').hasError('invalidAccount')" translate>
+          Invalid account
+        </ng-container>
+      </fims-account-select>
+      <mat-checkbox formControlName="denominationRequired" layout-margin translate>Denomination required?</mat-checkbox>
+    </form>
+    <ng-template td-step-actions>
+      <fims-form-final-action
+        [resourceName]="'TELLER'"
+        [editMode]="editMode"
+        [disabled]="form.invalid"
+        (onCancel)="cancel()"
+        (onSave)="save()" flex>
+      </fims-form-final-action>
+    </ng-template>
+  </td-step>
+</td-steps>

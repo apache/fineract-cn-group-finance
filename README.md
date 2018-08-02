@@ -1,27 +1,44 @@
-# FineractCnWebApp
+# QuickStart
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.2.
+## Setup
 
-## Development server
+* Ensure you have Node 6.10.0+ and NPM 3+ installed.
+* Install Node packages `npm i`
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Development
+* Follow instructions at https://github.com/apache/fineract-cn-demo-server and start demo-server
+* Run local dev environment `npm run dev`
+* Go to http://localhost:4200
 
-## Code scaffolding
+## Production build
+* Run license check `npm run checkLicenses`
+* Run in production mode `npm run runProd`. This is only to test if AOT is working and should never be used in a production environment.
+* Build production assets `npm run build`. Files will be stored under /dist.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Tests
+* Please follow the best practices here [Angular Testing](https://angular.io/docs/ts/latest/guide/testing.html)
+* Run karma tests `npm run test`
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+## Versioning
+The version numbers follow the [Semantic Versioning](http://semver.org/) scheme.
 
-## Running unit tests
+In addition to MAJOR.MINOR.PATCH the following postfixes are used to indicate the development state.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* snapshot - A release currently in development. 
+* m - A _milestone_ release include specific sets of functions and are released as soon as the functionality is complete.
+* rc - A _release candidate_ is a version with potential to be a final product, considered _code complete_.
+* ga - _General availability_ indicates that this release is the best available version and is recommended for all usage.
 
-## Running end-to-end tests
+The versioning layout is {MAJOR}.{MINOR}.{PATCH}-{INDICATOR}[.{PATCH}]. Only milestones and release candidates can  have patch versions. Some examples:
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+1.2.3-snapshot  
+1.3.5-m.1  
+1.5.7-rc.2  
+2.0.0-ga
 
-## Further help
+## Contributing
+See [CONTRIBUTING](CONTRIBUTING.md) file.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## License
+See [LICENSE](LICENSE) file.

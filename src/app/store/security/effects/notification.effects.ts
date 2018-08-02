@@ -22,7 +22,7 @@ import {Observable} from 'rxjs/Observable';
 import {Action} from '@ngrx/store';
 import * as securityActions from '../security.actions';
 import {LoginSuccessAction} from '../security.actions';
-import {NotificationService, NotificationType} from '../../../sevices/notification/notification.service';
+import {NotificationService, NotificationType} from '../../../services/notification/notification.service';
 
 @Injectable()
 export class SecurityNotificationEffects {

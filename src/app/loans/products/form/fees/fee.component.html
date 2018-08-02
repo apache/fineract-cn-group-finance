@@ -1,0 +1,59 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<form [formGroup]="form">
+  <fims-account-select title="Processing fee income account(Revenue accounts only)" formControlName="processingFeeAccount" [type]="'REVENUE'">
+    <ng-container *ngIf="!form.get('processingFeeAccount').pristine && form.get('processingFeeAccount').hasError('required')" translate>
+      Required
+    </ng-container>
+    <ng-container *ngIf="form.get('processingFeeAccount').hasError('invalidAccount')" translate>
+      Invalid account
+    </ng-container>
+  </fims-account-select>
+  <fims-account-select title="Loan origination fee income account(Revenue accounts only)" formControlName="originationFeeAccount" [type]="'REVENUE'">
+    <ng-container *ngIf="!form.get('originationFeeAccount').pristine && form.get('originationFeeAccount').hasError('required')" translate>
+      Required
+    </ng-container>
+    <ng-container *ngIf="form.get('originationFeeAccount').hasError('invalidAccount')" translate>
+      Invalid account
+    </ng-container>
+  </fims-account-select>
+  <fims-account-select title="Disbursement fee income account(Revenue accounts only)" formControlName="disbursementFeeAccount" [type]="'REVENUE'">
+    <ng-container *ngIf="!form.get('disbursementFeeAccount').pristine && form.get('disbursementFeeAccount').hasError('required')" translate>
+      Required
+    </ng-container>
+    <ng-container *ngIf="form.get('disbursementFeeAccount').hasError('invalidAccount')" translate>
+      Invalid account
+    </ng-container>
+  </fims-account-select>
+  <fims-account-select title="Late fee income account(Revenue accounts only)" formControlName="lateFeeIncomeAccount" [type]="'REVENUE'">
+    <ng-container *ngIf="!form.get('lateFeeIncomeAccount').pristine && form.get('lateFeeIncomeAccount').hasError('required')" translate>
+      Required
+    </ng-container>
+    <ng-container *ngIf="form.get('lateFeeIncomeAccount').hasError('invalidAccount')" translate>
+      Invalid account
+    </ng-container>
+  </fims-account-select>
+  <fims-account-select title="Late fee accrual account(Asset accounts only)" formControlName="lateFeeAccrualAccount" [type]="'ASSET'">
+    <ng-container *ngIf="!form.get('lateFeeAccrualAccount').pristine && form.get('lateFeeAccrualAccount').hasError('required')" translate>
+      Required
+    </ng-container>
+    <ng-container *ngIf="form.get('lateFeeAccrualAccount').hasError('invalidAccount')" translate>
+      Invalid account
+    </ng-container>
+  </fims-account-select>
+</form>

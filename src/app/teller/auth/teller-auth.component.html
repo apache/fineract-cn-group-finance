@@ -1,0 +1,47 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<div layout="column" layout-fill>
+  <div class="mat-content" layout-padding flex>
+    <div layout-gt-xs="row" layout-align-gt-xs="center start" class="margin">
+      <div flex-gt-xs="25" layout-align="center center" layout-margin>
+        <mat-card>
+          <mat-card-title>
+            unlock drawer
+          </mat-card-title>
+          <form [formGroup]="form" (ngSubmit)="auth()">
+            <mat-card-content layout="column">
+              <fims-text-input [form]="form" controlName="tellerCode" placeholder="{{'Teller number' | translate}}"></fims-text-input>
+              <div layout="row">
+                <mat-form-field layout-margin flex>
+                  <input matInput placeholder="{{'Password' | translate}}" type="password" formControlName="password" autocomplete="new-password"/>
+                  <mat-error *ngIf="form.get('password').hasError('required')" translate>
+                    Required
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <p class="mat-caption tc-red-700" *ngIf="error$ | async">{{'Sorry, that login did not work.' | translate}}</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">{{'UNLOCK' | translate}}</button>
+            </mat-card-actions>
+          </form>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,44 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
 
-body{
-    margin:0;
+// Custom style for loading elements without height
+.will-load {
+  min-height: 80px;
 }
-.heading{
-    margin-left:2%;
-    padding-top:5px;
-    padding-bottom: 5px;
-    height:15px;
-  }
-
-.fineract-button{
-    margin-top:5px;
-    margin-left:75%;
-    width:150px;
+// Href line height wasn't right for md-icon-button
+a[md-icon-button] {
+  line-height: 36px;
 }
 
-.main-div {
-    display:flex;
-    flex-direction: column;
-    margin-left: 2%;
-    margin-right:2%;
-    border-radius: 5px 5px 5px 5px;
-    background-color: white;
-    min-height: 100%;
+// Stretch tab labels until there is an attribute for it
+.md-tab-label {
+  flex-grow: 1;
+}
 
-  }
-
-  .filter{
-      width: 50%;
-  }
-
-  .page-space{
-    
-    margin-left: 2%;
-    background-color: white;
- 
- }
-
- .fineract-form{
-     margin-left: 2%;
- }
+// Disable final step in stepper components
+td-steps > div:last-child > td-step-header {
+  pointer-events: none;
+}

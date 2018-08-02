@@ -17,7 +17,7 @@
  * under the License.
  */
 import {Directive, Input} from '@angular/core';
-import {FimsPermission} from '../../sevices/security/authz/fims-permission.model';
+import {FimsPermission} from '../../services/security/authz/fims-permission.model';
 
 @Directive({
   // tslint:disable-next-line:directive-selector

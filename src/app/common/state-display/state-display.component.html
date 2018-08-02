@@ -1,0 +1,51 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<ng-container [ngSwitch]="state">
+  <mat-list-item *ngSwitchCase="'PENDING'">
+    <mat-icon matListAvatar color="accent">hourglass_empty</mat-icon>
+    <h3 matLine translate>PENDING</h3>
+  </mat-list-item>
+  <mat-list-item *ngSwitchCase="'OPEN'">
+    <mat-icon matListAvatar color="accent">lock_open</mat-icon>
+    <h3 matLine translate>OPEN</h3>
+  </mat-list-item>
+  <mat-list-item *ngSwitchCase="'ACTIVE'">
+    <mat-icon matListAvatar color="primary">check_circle</mat-icon>
+    <h3 matLine translate>ACTIVE</h3>
+  </mat-list-item>
+  <mat-list-item *ngSwitchCase="'APPROVED'">
+    <mat-icon matListAvatar color="primary">done_all</mat-icon>
+    <h3 matLine translate>APPROVED</h3>
+  </mat-list-item>
+  <mat-list-item *ngSwitchCase="'LOCKED'">
+    <mat-icon matListAvatar color="warn">lock</mat-icon>
+    <h3 matLine translate>LOCKED</h3>
+  </mat-list-item>
+  <mat-list-item *ngSwitchCase="'CLOSED'">
+    <mat-icon matListAvatar color="warn">close</mat-icon>
+    <h3 matLine translate>CLOSED</h3>
+  </mat-list-item>
+  <mat-list-item *ngSwitchCase="'CREATED'">
+    <mat-icon matListAvatar color="accent">hourglass_empty</mat-icon>
+    <h3 matLine translate>CREATED</h3>
+  </mat-list-item>
+  <mat-list-item *ngSwitchCase="'PAUSED'">
+    <mat-icon matListAvatar color="accent">hourglass_empty</mat-icon>
+    <h3 matLine translate>PAUSED</h3>
+  </mat-list-item>
+</ng-container>

@@ -1,0 +1,51 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<form [formGroup]="form">
+    <h4>{{catalog?.name}}</h4>
+    <div *ngFor="let field of catalog?.fields" [ngSwitch]="field.dataType" layout="row">
+      <fims-text-input *ngSwitchCase="'TEXT'" [form]="form" [controlName]="field.identifier" [placeholder]="field.label" [title]="field.hint"></fims-text-input>
+      <fims-text-input *ngSwitchCase="'NUMBER'" type="number" [form]="form" [controlName]="field.identifier" [placeholder]="field.label" [title]="field.hint"></fims-text-input>
+      <fims-date-input *ngSwitchCase="'DATE'" [form]="form" [controlName]="field.identifier" [placeholder]="field.label" [title]="field.hint"></fims-date-input>
+      <div class="pad-bottom-xs" *ngSwitchCase="'SINGLE_SELECTION'">
+        <div class="mat-body-1">{{field.label}}</div>
+        <mat-radio-group [formControlName]="field.identifier">
+          <mat-radio-button [value]="" layout-margin *ngIf="!field.mandatory" translate>
+            None
+          </mat-radio-button>
+          <mat-radio-button *ngFor="let option of field.options" [value]="option.value" title="{{field.hint}}" layout-margin>
+            {{option.label}}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="pad-bottom-xs" *ngSwitchCase="'MULTI_SELECTION'">
+        <div class="mat-body-1">{{field.label}}</div>
+        <td-chips [items]="field.options"
+                  [formControlName]="field.identifier"
+                  placeholder="{{field.hint}}">
+          <ng-template td-chip let-chip="chip">
+            <div class="tc-grey-100 bgc-teal-700" td-chip-avatar>
+              {{chip.label.substring(0, 1).toUpperCase()}}
+            </div> {{chip.label}}
+          </ng-template>
+          <ng-template td-autocomplete-option let-option="option">
+            {{option.label}}
+          </ng-template>
+        </td-chips>
+      </div>
+    </div>
+</form>
