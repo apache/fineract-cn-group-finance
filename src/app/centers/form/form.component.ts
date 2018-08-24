@@ -21,7 +21,7 @@ import {FormBuilder, FormGroup, ValidatorFn, Validators} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {TdStepComponent} from '@covalent/core';
 import {Office} from '../../services/office/domain/office.model';
-import {Center} from '../../services/office/domain/employee.model';
+import {Employee} from '../../services/office/domain/employee.model';
 import {BUSINESS, ContactDetail, EMAIL, MOBILE, PHONE} from '../../services/domain/contact/contact-detail.model';
 import {FetchRequest} from '../../services/domain/paging/fetch-request.model';
 import {Role} from '../../services/identity/domain/role.model';
@@ -32,12 +32,12 @@ import * as fromRoot from '../../store';
 import {SEARCH as SEARCH_OFFICE} from '../../store/office/office.actions';
 import {SEARCH as SEARCH_ROLE} from '../../store/role/role.actions';
 
-export interface CenterFormData {
+export interface EmployeeFormData {
   user: User;
-  employee: Center;
+  employee: Employee;
 }
 
-export interface CenterSaveEvent {
+export interface EmployeeSaveEvent {
   detailForm: {
     identifier: string;
     firstName: string;
@@ -51,7 +51,6 @@ export interface CenterSaveEvent {
     phone: string;
     mobile: string;
   };
-  
   officeForm: {
     assignedOffice: string;
   };
@@ -75,13 +74,13 @@ export class CenterFormComponent implements OnInit {
 
   @Input('editMode') editMode: boolean;
 
-  @Input('formData') set formData(formData: CenterFormData) {
+  @Input('formData') set formData(formData: EmployeeFormData) {
     this.prepareDetailForm(formData.employee, formData.user);
     this.prepareOfficeForm(formData.employee);
     this.prepareContactForm(formData.employee.contactDetails);
   }
 
-  @Output('onSave') onSave = new EventEmitter<CenterSaveEvent>();
+  @Output('onSave') onSave = new EventEmitter<EmployeeSaveEvent>();
   @Output('onCancel') onCancel = new EventEmitter<void>();
 
   constructor(private formBuilder: FormBuilder, private store: Store<fromRoot.State>) {}
@@ -98,7 +97,7 @@ export class CenterFormComponent implements OnInit {
     this.step.open();
   }
 
-  prepareDetailForm(employee: Center, user: User): void {
+  prepareDetailForm(employee: Employee, user: User): void {
     const passwordValidators: ValidatorFn[] = [Validators.minLength(8)];
 
     if (!this.editMode) {
@@ -115,13 +114,13 @@ export class CenterFormComponent implements OnInit {
     });
   }
 
-  private prepareOfficeForm(employee: Center) {
+  private prepareOfficeForm(employee: Employee) {
     this.officeForm = this.formBuilder.group({
       assignedOffice: [employee.assignedOffice]
     });
   }
 
- private prepareContactForm(contactDetails: ContactDetail[]): void {
+  private prepareContactForm(contactDetails: ContactDetail[]): void {
     let phone = '';
     let mobile = '';
     let email = '';
@@ -140,7 +139,6 @@ export class CenterFormComponent implements OnInit {
       mobile: [mobile, Validators.maxLength(256)]
     });
   }
-  
 
   getFirstItemByType(contactDetails: ContactDetail[], type: string): string {
     const items = contactDetails.filter(contact => contact.type === type);
@@ -152,8 +150,6 @@ export class CenterFormComponent implements OnInit {
     (!this.contactForm.pristine && this.contactForm.invalid)
       || this.detailForm.invalid;
   }
-
-  
 
   save(): void {
     this.onSave.emit({

@@ -1,0 +1,55 @@
+<fims-layout-card-over title="{{'Collection sheet' | translate}}">
+    <fims-layout-card-over-header-menu>
+      <td-search-box #searchBox placeholder="{{'Search' | translate}}" (search)="search($event)" [alwaysVisible]="false"></td-search-box>
+    </fims-layout-card-over-header-menu>
+   
+    <mat-form-field>
+      <mat-select placeholder="Select office">
+        <mat-option *ngFor="let office of offices" [value]="office.value">
+          {{office.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br/>
+
+    <mat-form-field>
+      <mat-select placeholder="Select Loan officer">
+        <mat-option *ngFor="let staff of staffs" [value]="staff.value">
+          {{staff.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br/>
+
+    <button mat-raised-button color="primary">
+      Productive Collection Sheet
+   </button>
+   <br/>
+
+
+    <mat-form-field>
+      <mat-select placeholder="Select center">
+        <mat-option *ngFor="let center of centers" [value]="center.value">
+          {{center.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br/>
+
+    <mat-form-field>
+      <mat-select placeholder="Select group">
+        <mat-option *ngFor="let group of groups" [value]="group.value">
+          {{group.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br/>
+
+    <button mat-raised-button color="primary" class="button">
+       Collection Sheet
+    </button>
+
+   
+    
+  </fims-layout-card-over>
+ 

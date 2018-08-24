@@ -18,13 +18,13 @@
  */
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {CenterFormComponent, CenterFormData, CenterSaveEvent} from '../form.component';
+import {CenterFormComponent, EmployeeFormData, EmployeeSaveEvent} from '../form.component';
 import {mapEmployee, mapUser} from '../form.mapper';
-import {Center} from '../../../services/office/domain/employee.model';
+import {Employee} from '../../../services/office/domain/employee.model';
 import {UserWithPassword} from '../../../services/identity/domain/user-with-password.model';
 import * as fromEmployees from '../../store';
 import {Subscription} from 'rxjs/Subscription';
-import {CREATE, RESET_FORM} from '../../store/employee.actions';
+import {CREATE, RESET_FORM} from '../../store/center.actions';
 import {Error} from '../../../services/domain/error.model';
 import {EmployeesStore} from '../../store/index';
 
@@ -37,7 +37,7 @@ export class CreateCenterFormComponent implements OnInit, OnDestroy {
 
   @ViewChild('form') formComponent: CenterFormComponent;
 
-  centerFormData: CenterFormData = {
+  employeeFormData: EmployeeFormData = {
     user: { identifier: '', role: ''},
     employee: { identifier: '', givenName: '', surname: '', contactDetails: [] }
   };
@@ -62,8 +62,8 @@ export class CreateCenterFormComponent implements OnInit, OnDestroy {
     this.store.dispatch({ type: RESET_FORM });
   }
 
-  onSave(event: CenterSaveEvent): void {
-    const employee: Center = mapEmployee(event);
+  onSave(event: EmployeeSaveEvent): void {
+    const employee: Employee = mapEmployee(event);
     const user: UserWithPassword = mapUser(event);
 
     this.store.dispatch({ type: CREATE, payload: {

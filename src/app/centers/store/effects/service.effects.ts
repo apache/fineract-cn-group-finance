@@ -22,7 +22,7 @@ import {Actions, Effect} from '@ngrx/effects';
 import {Observable} from 'rxjs/Observable';
 import {Action} from '@ngrx/store';
 import {of} from 'rxjs/observable/of';
-import * as employeeActions from '../employee.actions';
+import * as employeeActions from '../center.actions';
 import {IdentityService} from '../../../services/identity/identity.service';
 import {RoleIdentifier} from '../../../services/identity/domain/role-identifier.model';
 import {Password} from '../../../services/identity/domain/password.model';

@@ -18,8 +18,8 @@
  */
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, EventEmitter, ViewChild} from '@angular/core';
-import {Center} from '../../services/office/domain/employee.model';
-import {CenterFormComponent, CenterFormData, CenterSaveEvent} from './form.component';
+import {Employee} from '../../services/office/domain/employee.model';
+import {CenterFormComponent, EmployeeFormData, EmployeeSaveEvent} from './form.component';
 import {User} from '../../services/identity/domain/user.model';
 import {TranslateModule} from '@ngx-translate/core';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -30,7 +30,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {FimsSharedModule} from '../../common/common.module';
 import {MatIconModule, MatInputModule, MatOptionModule, MatSelectModule} from '@angular/material';
 
-const employeeTemplate: Center = {
+const employeeTemplate: Employee = {
   identifier: 'test',
   givenName: 'test',
   middleName: 'test',
@@ -40,7 +40,7 @@ const employeeTemplate: Center = {
     group: 'BUSINESS',
     value: 'test@test.de',
     preferenceLevel: 0
-  }], 
+  }],
   assignedOffice: 'test'
 };
 
@@ -88,7 +88,7 @@ describe('Test employee form component', () => {
   it('should test if the form save the original values', () => {
     fixture.detectChanges();
 
-    testComponent.saveEmitter.subscribe((saveEvent: CenterSaveEvent) => {
+    testComponent.saveEmitter.subscribe((saveEvent: EmployeeSaveEvent) => {
       expect(employeeTemplate.identifier).toEqual(saveEvent.detailForm.identifier);
       expect(employeeTemplate.givenName).toEqual(saveEvent.detailForm.firstName);
       expect(employeeTemplate.middleName).toEqual(saveEvent.detailForm.middleName);
@@ -115,11 +115,11 @@ describe('Test employee form component', () => {
 })
 class TestComponent {
 
-  saveEmitter = new EventEmitter<CenterSaveEvent>();
+  saveEmitter = new EventEmitter<EmployeeSaveEvent>();
 
-  @ViewChild('form') formComponent: CenterFormComponent;
+  @ViewChild('form') formComponent: EmployeeFormComponent;
 
-  employeeFormData: CenterFormData = {
+  employeeFormData: EmployeeFormData = {
     employee: employeeTemplate,
     user: userTemplate
   };
@@ -128,7 +128,7 @@ class TestComponent {
     this.formComponent.save();
   }
 
-  onSave(event: CenterSaveEvent): void {
+  onSave(event: EmployeeSaveEvent): void {
     this.saveEmitter.emit(event);
   }
 

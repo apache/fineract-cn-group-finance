@@ -20,15 +20,15 @@ import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
 import {TranslateModule} from '@ngx-translate/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CovalentStepsModule} from '@covalent/core';
-import {EditEmployeeFormComponent} from './edit.form.component';
+import {EditCenterFormComponent} from './edit.form.component';
 import {CenterFormComponent} from '../form.component';
 import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../../../services/identity/domain/user.model';
-import {Center} from '../../../services/office/domain/employee.model';
+import {Employee} from '../../../services/office/domain/employee.model';
 import {Observable} from 'rxjs/Observable';
 import {EmployeesStore} from '../../store/index';
 import {Store} from '@ngrx/store';
-import {UPDATE} from '../../store/employee.actions';
+import {UPDATE} from '../../store/center.actions';
 import * as fromEmployees from '../../store';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCardModule, MatInputModule, MatOptionModule, MatSelectModule} from '@angular/material';
@@ -40,7 +40,7 @@ const userMock: User = {
   role: 'test'
 };
 
-const employeeMock: Center = {
+const employeeMock: Employee = {
   identifier: 'test',
   assignedOffice: 'test',
   givenName: 'test',
@@ -54,7 +54,6 @@ const employeeMock: Center = {
       preferenceLevel: 1
     }
   ]
-  
 };
 
 const activatedRoute = {
@@ -66,9 +65,9 @@ let router: Router;
 
 describe('Test employee form component', () => {
 
-  let fixture: ComponentFixture<EditEmployeeFormComponent>;
+  let fixture: ComponentFixture<EditCenterFormComponent>;
 
-  let testComponent: EditEmployeeFormComponent;
+  let testComponent: EditCenterFormComponent;
 
   beforeEach(() => {
     router = jasmine.createSpyObj('Router', ['navigate']);
@@ -76,7 +75,7 @@ describe('Test employee form component', () => {
     TestBed.configureTestingModule({
       declarations: [
         CenterFormComponent,
-        EditEmployeeFormComponent,
+        EditCenterFormComponent,
       ],
       imports: [
         TranslateModule.forRoot(),
@@ -114,7 +113,7 @@ describe('Test employee form component', () => {
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     });
 
-    fixture = TestBed.createComponent(EditEmployeeFormComponent);
+    fixture = TestBed.createComponent(EditCenterFormComponent);
     testComponent = fixture.componentInstance;
   });
 
