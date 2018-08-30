@@ -80,7 +80,7 @@ export class CenterComponent implements OnInit {
   }
 
   rowSelect(row: Employee): void {
-    this.router.navigate(['detail', row.identifier], { relativeTo: this.route });
+    this.router.navigate(['/detail']);
   }
 
   fetchEmployees(fetchRequest?: FetchRequest) {

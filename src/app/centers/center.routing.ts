@@ -36,11 +36,9 @@ export const CenterRoutes: Routes = [
     data: {title: 'Create Employee', hasPermission: {id: 'office_employees', accessLevel: 'CHANGE'}}
   },
   {
-    path: 'detail/:id/edit',
+    path: 'detail',
     component: EditCenterFormComponent,
-    canActivate: [CenterExistsGuard],
-    resolve: {user: UserResolver},
-    data: {title: 'Edit Employee', hasPermission: {id: 'office_employees', accessLevel: 'CHANGE'}}
+   
   },
   {
     path: 'detail/:id',

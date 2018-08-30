@@ -33,7 +33,7 @@
       <td style="text-align: center; vertical-align: middle;">{{data.accountNo}}</td> 
       <td style="text-align: center; vertical-align: middle;">{{data.id}}</td>
       <td style="text-align: center; vertical-align: middle;">{{data.status.value}}</td>
-      <td style="text-align: center; vertical-align: middle;">{{data.officeName}}</td>
+      <td style="text-align: center; vertical-align: middle;"><a (click)="rowSelect($event)">{{data.officeName}}</a></td>
     </tr>
    
   </table>
