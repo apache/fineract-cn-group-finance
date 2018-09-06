@@ -78,9 +78,9 @@ export class CenterComponent implements OnInit {
     this.searchTerm = searchTerm;
     this.fetchEmployees();
   }
-
+  
   rowSelect(row: Employee): void {
-    this.router.navigate(['/detail']);
+    this.router.navigate(['detail', row.identifier], { relativeTo: this.route });
   }
 
   fetchEmployees(fetchRequest?: FetchRequest) {

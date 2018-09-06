@@ -28,7 +28,7 @@
       <th>Status</th> 
       <th>Office</th>
     </tr>
-    <tr *ngFor = "let data of DataArray">
+    <tr *ngFor = "let data of DataArray"  (onActionCellClick)="rowSelect($event)">
       <td style="text-align: center; vertical-align: middle;">{{data.name}}</td>
       <td style="text-align: center; vertical-align: middle;">{{data.accountNo}}</td> 
       <td style="text-align: center; vertical-align: middle;">{{data.id}}</td>
