@@ -79,6 +79,7 @@
             </mat-form-field>
           </div>
           <br>
+          <p style="color:red;text-align: center">{{ error$ | async }}</p>
           <br>
           <p>
             <button mat-raised-button color="primary" type="submit" class="btn" [disabled]="form.invalid">Sign In</button>
