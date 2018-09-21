@@ -66,15 +66,16 @@
         <br>
         <br>
         <div class="app-input">
-          <mat-icon>https</mat-icon>
-          </div>
+          <mat-icon>https
           <div class="app-input1">
             <mat-form-field class="app-input2">
               <input matInput placeholder="Password" type="password" formControlName="password" autocomplete="new-password" [type]="hide ? 'password' : 'text'">
+              <input matInput placeholder="Password" type="password" formControlName="password" autocomplete="new-password" [type]="passwordField ? 'password' : 'text'">
               <mat-error *ngIf="form.get('password').hasError('required')">
                   Required
                 </mat-error>
               <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+              <mat-icon matSuffix (click)="togglePasswordField()">{{passwordField ? 'visibility' : 'visibility_off'}}</mat-icon>
             </mat-form-field>
           </div>
           <br>
