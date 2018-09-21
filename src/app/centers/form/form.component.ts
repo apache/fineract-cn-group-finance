@@ -31,6 +31,7 @@ import {Store} from '@ngrx/store';
 import * as fromRoot from '../../store';
 import {SEARCH as SEARCH_OFFICE} from '../../store/office/office.actions';
 import {SEARCH as SEARCH_ROLE} from '../../store/role/role.actions';
+import { Staff } from '../../services/domain/centers/staff';
 
 export interface CenterFormData {
   user: User;
@@ -67,6 +68,7 @@ export class CenterFormComponent implements OnInit {
 
   roles: Observable<Role[]>;
 
+  staffs: Staff[];
   detailForm: FormGroup;
   contactForm: FormGroup;
   officeForm: FormGroup;
