@@ -51,8 +51,8 @@
           <mat-icon>arrow_drop_down</mat-icon>
         </button>
         <mat-menu #report="matMenu">
-          <a mat-menu-item [routerLink]="['/reporting']">Member</a>
-          <a mat-menu-item [routerLink]="['/reporting/deposits']">Deposit</a>
+          <a mat-menu-item [routerLink]="['/reports']">Member</a>
+          <a mat-menu-item [routerLink]="['/deposits']">Deposit</a>
          
         </mat-menu>
       </li>
@@ -75,15 +75,7 @@
     </div>
     <div class="search1">
     <ul id="menu">
-      <li>
-        <input matInput placeholder="click or press alt + X to Search" type="text" class="fineract-toolsearch">
-      </li>
      
-      <li class="dropdown-button">
-        <button mat-icon-button [routerLink]="['/navbar/notification']">
-          <mat-icon>notifications</mat-icon>
-        </button>
-      </li>
       <li>
         <button mat-button [matMenuTriggerFor]="mifos" class="dropdown-button">Fineract CN
           <mat-icon>arrow_drop_down</mat-icon>
