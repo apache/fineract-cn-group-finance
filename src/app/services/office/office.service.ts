@@ -28,6 +28,8 @@ import {EmployeePage} from './domain/employee-page.model';
 import {Employee} from './domain/employee.model';
 import {buildSearchParams} from '../domain/paging/search-param.builder';
 import {ContactDetail} from '../domain/contact/contact-detail.model';
+import { BaseRequestOptions } from '@angular/http/src/base_request_options';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class OfficeService {
@@ -87,8 +89,8 @@ export class OfficeService {
       search: params
     };
 
-    return this.http.get(this.baseUrl + '/employees', requestOptions)
-      .catch(Error.handleError);
+    return this.http.get(this.baseUrl + '/employees/', requestOptions)
+     .catch(Error.handleError);
   }
 
   getEmployee(id: string, silent?: true): Observable<Employee> {
@@ -97,7 +99,7 @@ export class OfficeService {
   }
 
   createEmployee(employee: Employee): Observable<Employee> {
-    return this.http.post(this.baseUrl + '/employees', employee)
+    return this.http.post(this.baseUrl + '/employees/' , employee)
       .catch(Error.handleError);
   }
 
@@ -113,6 +115,12 @@ export class OfficeService {
 
   setContactDetails(id: string, contactDetails: ContactDetail[]): Observable<void> {
     return this.http.put(this.baseUrl + '/employees/' + id + '/contacts', contactDetails);
+  }
+
+  allCenters(){
+     return this.http.get('http://localhost:3000/pageItems')
+    .map((response:Response) => response);
+    
   }
 
 }

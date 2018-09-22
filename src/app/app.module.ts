@@ -114,6 +114,7 @@ export function HttpLoaderFactory(http: Http) {
     ExistsGuardService,
     ...appRoutingProviders,
     ImageService,
+   
     {
       provide: LOCALE_ID, useFactory: getSelectedLanguage, deps: [TranslateService],
     }

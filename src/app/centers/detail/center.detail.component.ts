@@ -18,26 +18,26 @@
  */
 import {ActivatedRoute, Router} from '@angular/router';
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Center} from '../../services/office/domain/employee.model';
+import {Employee} from '../../services/office/domain/employee.model';
 import {TdDialogService} from '@covalent/core';
 import {Observable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Subscription';
 import {User} from '../../services/identity/domain/user.model';
 import * as fromEmployee from '../store';
-import {DELETE, SelectAction} from '../store/employee.actions';
+import {DELETE, SelectAction} from '../store/center.actions';
 import {EmployeesStore} from '../store/index';
 
 @Component({
-  selector: 'fims-employee-detail',
-  templateUrl: './employee.detail.component.html'
+  selector: 'fims-center-detail',
+  templateUrl: './center.detail.component.html'
 })
-export class EmployeeDetailComponent implements OnInit, OnDestroy {
+export class CenterDetailComponent implements OnInit, OnDestroy {
 
   private actionsSubscription: Subscription;
 
   private employeeSubscription: Subscription;
 
-  employee: Center;
+  employee: Employee;
 
   user: User;
 

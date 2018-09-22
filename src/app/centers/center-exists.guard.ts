@@ -21,7 +21,7 @@ import {Injectable} from '@angular/core';
 import {OfficeService} from '../services/office/office.service';
 import * as fromEmployees from './store';
 import {Observable} from 'rxjs/Observable';
-import {LoadAction} from './store/employee.actions';
+import {LoadAction} from './store/center.actions';
 import {of} from 'rxjs/observable/of';
 import {EmployeesStore} from './store/index';
 import {ExistsGuardService} from '../common/guards/exists-guard';

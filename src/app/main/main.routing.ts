@@ -39,7 +39,8 @@ export const MainRoutes: Routes = [
       { path: 'teller', loadChildren: './../teller/teller.module#TellerModule' },
       { path: 'reports', loadChildren: './../reporting/reporting.module#ReportingModule' },
       { path: 'denied', component: AccessDeniedComponent, data: { title: 'Not allowed' }},
-      { path: 'centers', loadChildren: './../centers/center.module#CenterModule' }
+      { path: 'centers', loadChildren: './../centers/center.module#CenterModule' },
+      { path: 'collection', loadChildren: './../collection/collection.module#CollectionModule' }
     
     ]
   },

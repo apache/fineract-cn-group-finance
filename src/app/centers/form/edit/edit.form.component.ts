@@ -18,24 +18,24 @@
  */
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {CenterFormComponent, CenterFormData, CenterSaveEvent} from '../form.component';
+import {CenterFormComponent, EmployeeFormData, EmployeeSaveEvent} from '../form.component';
 import {mapContactDetails, mapEmployee} from '../form.mapper';
-import {Center} from '../../../services/office/domain/employee.model';
+import {Employee} from '../../../services/office/domain/employee.model';
 import {User} from '../../../services/identity/domain/user.model';
-import {UPDATE} from '../../store/employee.actions';
+import {UPDATE} from '../../store/center.actions';
 import {Observable} from 'rxjs/Observable';
 import {EmployeesStore, getSelectedEmployee} from '../../store/index';
 
 @Component({
   templateUrl: './edit.form.component.html'
 })
-export class EditEmployeeFormComponent implements OnInit {
+export class EditCenterFormComponent implements OnInit {
 
   @ViewChild('form') formComponent: CenterFormComponent;
 
-  formData: Observable<CenterFormData>;
+  formData: Observable<EmployeeFormData>;
 
-  employee: Center;
+  employee: Employee;
 
   user: User;
 
@@ -45,7 +45,7 @@ export class EditEmployeeFormComponent implements OnInit {
     this.formData = Observable.combineLatest(
       this.store.select(getSelectedEmployee),
       this.route.data,
-      (employee: Center, data: { user: User }) => {
+      (employee: Employee, data: { user: User }) => {
         return {
           user: data.user,
           employee: employee
@@ -54,8 +54,8 @@ export class EditEmployeeFormComponent implements OnInit {
     );
   }
 
-  onSave(event: CenterSaveEvent) {
-    const employee: Center = mapEmployee(event);
+  onSave(event: EmployeeSaveEvent) {
+    const employee: Employee = mapEmployee(event);
 
     this.store.dispatch({ type: UPDATE, payload: {
       employee: employee,

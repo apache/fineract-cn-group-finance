@@ -17,26 +17,17 @@
  * under the License.
  */
 import {Injectable} from '@angular/core';
-import {Actions, Effect} from '@ngrx/effects';
+import {ActivatedRouteSnapshot, Resolve} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
-import {Action} from '@ngrx/store';
-import * as employeeActions from '../center.actions';
-import {Router} from '@angular/router';
+import {IdentityService} from '../services/identity/identity.service';
+import {User} from '../services/identity/domain/user.model';
 
 @Injectable()
-export class EmployeeRouteEffects {
+export class UserResolver implements Resolve<User> {
 
-  @Effect({ dispatch: false })
-  createEmployeeSuccess$: Observable<Action> = this.actions$
-    .ofType(employeeActions.CREATE_SUCCESS, employeeActions.UPDATE_SUCCESS)
-    .map(action => action.payload)
-    .do(payload => this.router.navigate(['../'], { relativeTo: payload.activatedRoute} ));
+  constructor(private identityService: IdentityService) {}
 
-  @Effect({ dispatch: false })
-  deleteEmployeeSuccess$: Observable<Action> = this.actions$
-    .ofType(employeeActions.DELETE_SUCCESS)
-    .map(action => action.payload)
-    .do(payload => this.router.navigate(['../../'], { relativeTo: payload.activatedRoute }));
-
-  constructor(private actions$: Actions, private router: Router) { }
+  resolve(route: ActivatedRouteSnapshot): Observable<User> {
+    return this.identityService.getUser(route.params['id']);
+  }
 }
