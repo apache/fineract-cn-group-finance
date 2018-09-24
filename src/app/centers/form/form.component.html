@@ -43,7 +43,8 @@
                         noSelectionMessage="{{'No office assigned to employee, yet.' | translate}}">
     </fims-select-list>
 <br/>
-    <mat-form-field>
+
+   <mat-form-field>
       <mat-select placeholder="Select Staff">
         <mat-option *ngFor="let staff of staffs" [value]="staff.value">
           {{staff.viewValue}}
@@ -51,13 +52,13 @@
       </mat-select>
     </mat-form-field>
     
-    
+   
     <ng-template td-step-actions>
-      <fims-form-continue-action (onContinue)="contactStep.open()"></fims-form-continue-action>
+      <fims-form-continue-action (onContinue)="groupStep.open()"></fims-form-continue-action>
     </ng-template>
   </td-step>
 
-  <td-step #officeStep label="{{'Assign group to center' | translate}}"
+  <td-step #groupStep label="{{'Assign group to center' | translate}}"
            [state]="officeForm.get('assignedOffice').value ? 'complete' : 'none'">
 
     <fims-select-list #officeList flex
@@ -67,10 +68,6 @@
                         noSelectionMessage="{{'No group assigned to center, yet.' | translate}}">
     </fims-select-list>
 
-    
-    <ng-template td-step-actions>
-      <fims-form-continue-action (onContinue)="contactStep.open()"></fims-form-continue-action>
-    </ng-template>
   </td-step>
 
   <td-step label="{{'Final step' | translate}}" [state]="'complete'">

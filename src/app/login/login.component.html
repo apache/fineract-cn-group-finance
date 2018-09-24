@@ -70,11 +70,11 @@
           </div>
           <div class="app-input1">
             <mat-form-field class="app-input2">
-              <input matInput placeholder="Password" type="password" formControlName="password" autocomplete="new-password" [type]="hide ? 'password' : 'text'">
+              <input matInput placeholder="Password" type="password" formControlName="password" autocomplete="new-password" [type]="!hide ? 'password' : 'text'">
               <mat-error *ngIf="form.get('password').hasError('required')">
                   Required
                 </mat-error>
-              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility' }}</mat-icon>
             </mat-form-field>
           </div>
           <br>

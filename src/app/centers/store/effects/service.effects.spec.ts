@@ -22,7 +22,7 @@ import {EmployeeApiEffects} from './service.effects';
 import {OfficeService} from '../../../services/office/office.service';
 import {IdentityService} from '../../../services/identity/identity.service';
 import {Observable} from 'rxjs/Observable';
-import {UpdateEmployeeAction, UpdateEmployeeSuccessAction} from '../employee.actions';
+import {UpdateEmployeeAction, UpdateEmployeeSuccessAction} from '../center.actions';
 import {Employee} from '../../../services/office/domain/employee.model';
 
 describe('Account Search Api Effects', () => {

@@ -20,20 +20,20 @@ import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
 import {TranslateModule} from '@ngx-translate/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CovalentStepsModule} from '@covalent/core';
-import {CenterFormComponent, CenterSaveEvent} from '../form.component';
+import {CenterFormComponent, EmployeeSaveEvent} from '../form.component';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import {CreateCenterFormComponent} from './create.form.component';
 import {mapEmployee, mapUser} from '../form.mapper';
 import {EmployeesStore} from '../../store/index';
-import {CREATE} from '../../store/employee.actions';
+import {CREATE} from '../../store/center.actions';
 import {Store} from '@ngrx/store';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCardModule, MatInputModule, MatOptionModule, MatSelectModule} from '@angular/material';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {FimsSharedModule} from '../../../common/common.module';
 
-const eventMock: CenterSaveEvent = {
+const eventMock: EmployeeSaveEvent = {
   detailForm: {
     identifier: 'test',
     firstName: 'test',
@@ -47,7 +47,6 @@ const eventMock: CenterSaveEvent = {
     mobile: 'test',
     phone: 'test'
   },
-  
   officeForm: {
     assignedOffice: 'test'
   }

@@ -25,6 +25,8 @@ import {Store} from '@ngrx/store';
 import * as fromRoot from '../store';
 import {Observable} from 'rxjs/Observable';
 import {SEARCH} from '../store/employee/employee.actions';
+import {OfficeService} from '../services/office/office.service';
+
 
 @Component({
   selector: 'fims-employee',
@@ -35,7 +37,8 @@ export class EmployeeComponent implements OnInit {
   employeeData$: Observable<TableData>;
 
   loading$: Observable<boolean>;
-
+  
+  
   columns: any[] = [
     { name: 'identifier', label: 'Id' },
     { name: 'givenName', label: 'First Name' },
@@ -62,6 +65,7 @@ export class EmployeeComponent implements OnInit {
     this.route.queryParams.subscribe((params: Params) => {
       this.search(params['term']);
     });
+   
   }
 
   search(searchTerm: string): void {
@@ -82,4 +86,6 @@ export class EmployeeComponent implements OnInit {
 
     this.store.dispatch({ type: SEARCH, payload: this.lastFetchRequest });
   }
+
+
 }
