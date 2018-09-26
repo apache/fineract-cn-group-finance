@@ -74,7 +74,7 @@
               <mat-error *ngIf="form.get('password').hasError('required')">
                   Required
                 </mat-error>
-                <mat-icon matSuffix (click)="togglePasswordField()">{{passwordField ? 'visibility' : 'visibility_off'}}</mat-icon>
+                <mat-icon matSuffix (click)="togglePasswordField()">{{passwordField ? 'visibility_off' : 'visibility'}}</mat-icon>
             </mat-form-field>
           </div>
           <br>
