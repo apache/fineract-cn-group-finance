@@ -37,6 +37,8 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   private loadingSubscription: Subscription;
 
+  hide: boolean;
+
   currentLanguage: string;
 
   languageOptions: any[] = [

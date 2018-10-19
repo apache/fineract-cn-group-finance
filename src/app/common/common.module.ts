@@ -50,7 +50,8 @@ import {
   MatSelectModule,
   MatSnackBarModule,
   MatToolbarModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatFormFieldModule
 } from '@angular/material';
 import {EmployeeAutoCompleteComponent} from './employee-autocomplete/employee-auto-complete.component';
 import {TextMaskModule} from 'angular2-text-mask';
@@ -85,6 +86,7 @@ import {DisplayFimsFinancialNumber} from './number/fims-financial-number.pipe';
     MatSnackBarModule,
     MatToolbarModule,
     MatTooltipModule,
+    MatFormFieldModule,
     ReactiveFormsModule,
     TextMaskModule,
     TranslateModule

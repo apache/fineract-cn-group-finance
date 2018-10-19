@@ -62,6 +62,13 @@ export interface EmployeeSaveEvent {
 })
 export class CenterFormComponent implements OnInit {
 
+  staffs = [
+    {value: '', viewValue: ''},
+    
+  ];
+
+
+
   offices: Observable<Office[]>;
 
   roles: Observable<Role[]>;
@@ -77,7 +84,7 @@ export class CenterFormComponent implements OnInit {
   @Input('formData') set formData(formData: EmployeeFormData) {
     this.prepareDetailForm(formData.employee, formData.user);
     this.prepareOfficeForm(formData.employee);
-    this.prepareContactForm(formData.employee.contactDetails);
+   // this.prepareContactForm(formData.employee.contactDetails);
   }
 
   @Output('onSave') onSave = new EventEmitter<EmployeeSaveEvent>();
@@ -107,7 +114,7 @@ export class CenterFormComponent implements OnInit {
     this.detailForm = this.formBuilder.group({
       identifier: [employee.identifier, [Validators.required, Validators.minLength(3), Validators.maxLength(32), FimsValidators.urlSafe]],
       firstName: [employee.givenName, [Validators.required, Validators.maxLength(256)]],
-      middleName: [employee.middleName, Validators.maxLength(256)],
+     middleName: [employee.middleName, Validators.maxLength(256)],
       lastName: [employee.surname, [Validators.required, Validators.maxLength(256)]],
       password: ['', passwordValidators],
       role: [user ? user.role : '', Validators.required]
@@ -158,6 +165,7 @@ export class CenterFormComponent implements OnInit {
       officeForm: this.officeForm.value
     });
   }
+
 
   cancel(): void {
     this.onCancel.emit();

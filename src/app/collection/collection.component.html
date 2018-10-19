@@ -1,8 +1,5 @@
-<fims-layout-card-over title="{{'Collection sheet' | translate}}">
-    <fims-layout-card-over-header-menu>
-      <td-search-box #searchBox placeholder="{{'Search' | translate}}" (search)="search($event)" [alwaysVisible]="false"></td-search-box>
-    </fims-layout-card-over-header-menu>
-   
+<fims-layout-card-over title="{{'Collection sheet'}}">
+ 
     <mat-form-field>
       <mat-select placeholder="Select office">
         <mat-option *ngFor="let office of offices" [value]="office.value">
