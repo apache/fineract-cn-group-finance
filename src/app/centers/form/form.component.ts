@@ -32,12 +32,12 @@ import * as fromRoot from '../../store';
 import {SEARCH as SEARCH_OFFICE} from '../../store/office/office.actions';
 import {SEARCH as SEARCH_ROLE} from '../../store/role/role.actions';
 
-export interface EmployeeFormData {
+export interface CenterFormData {
   user: User;
   employee: Employee;
 }
 
-export interface EmployeeSaveEvent {
+export interface CenterSaveEvent {
   detailForm: {
     identifier: string;
     firstName: string;
@@ -81,13 +81,13 @@ export class CenterFormComponent implements OnInit {
 
   @Input('editMode') editMode: boolean;
 
-  @Input('formData') set formData(formData: EmployeeFormData) {
+  @Input('formData') set formData(formData: CenterFormData) {
     this.prepareDetailForm(formData.employee, formData.user);
     this.prepareOfficeForm(formData.employee);
-   // this.prepareContactForm(formData.employee.contactDetails);
+    this.prepareContactForm(formData.employee.contactDetails);
   }
 
-  @Output('onSave') onSave = new EventEmitter<EmployeeSaveEvent>();
+  @Output('onSave') onSave = new EventEmitter<CenterSaveEvent>();
   @Output('onCancel') onCancel = new EventEmitter<void>();
 
   constructor(private formBuilder: FormBuilder, private store: Store<fromRoot.State>) {}

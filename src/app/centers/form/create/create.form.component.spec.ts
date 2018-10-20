@@ -20,7 +20,7 @@ import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
 import {TranslateModule} from '@ngx-translate/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CovalentStepsModule} from '@covalent/core';
-import {CenterFormComponent, EmployeeSaveEvent} from '../form.component';
+import {CenterFormComponent, CenterSaveEvent} from '../form.component';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import {CreateCenterFormComponent} from './create.form.component';
@@ -33,7 +33,7 @@ import {MatCardModule, MatInputModule, MatOptionModule, MatSelectModule} from '@
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {FimsSharedModule} from '../../../common/common.module';
 
-const eventMock: EmployeeSaveEvent = {
+const eventMock: CenterSaveEvent = {
   detailForm: {
     identifier: 'test',
     firstName: 'test',

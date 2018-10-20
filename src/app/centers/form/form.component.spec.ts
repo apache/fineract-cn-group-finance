@@ -19,7 +19,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, EventEmitter, ViewChild} from '@angular/core';
 import {Center} from '../../services/center/domain/center.model';
-import {CenterFormComponent, EmployeeFormData, EmployeeSaveEvent} from './form.component';
+import {CenterFormComponent, CenterFormData, CenterSaveEvent} from './form.component';
 import {User} from '../../services/identity/domain/user.model';
 import {TranslateModule} from '@ngx-translate/core';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -89,7 +89,7 @@ describe('Test center form component', () => {
   it('should test if the form save the original values', () => {
     fixture.detectChanges();
 
-    testComponent.saveEmitter.subscribe((saveEvent: EmployeeSaveEvent) => {
+    testComponent.saveEmitter.subscribe((saveEvent: CenterSaveEvent) => {
       expect(centerTemplate.identifier).toEqual(saveEvent.detailForm.identifier);
       expect(centerTemplate.givenName).toEqual(saveEvent.detailForm.firstName);
       expect(centerTemplate.middleName).toEqual(saveEvent.detailForm.middleName);
@@ -116,11 +116,11 @@ describe('Test center form component', () => {
 })
 class TestComponent {
 
-  saveEmitter = new EventEmitter<EmployeeSaveEvent>();
+  saveEmitter = new EventEmitter<CenterSaveEvent>();
 
   @ViewChild('form') formComponent: CenterFormComponent;
 
-  employeeFormData: EmployeeFormData = {
+  employeeFormData: CenterFormData = {
     employee: centerTemplate,
     user: userTemplate
   };
@@ -129,8 +129,8 @@ class TestComponent {
     this.formComponent.save();
   }
 
-  onSave(event: EmployeeSaveEvent): void {
+  onSave(event: CenterSaveEvent): void {
     this.saveEmitter.emit(event);
-  }
 
+  }
 }

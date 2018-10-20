@@ -7,6 +7,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {CovalentStepsModule} from '@covalent/core';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslateModule} from '@ngx-translate/core';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs/Observable';
 
 
 
@@ -31,6 +33,13 @@ describe('CollectionComponent', () => {
         
 
       ],
+      providers: [
+        {
+          provide: Store, useClass: class {
+          dispatch = jasmine.createSpy('dispatch');
+          select = jasmine.createSpy('select').and.returnValue(Observable.empty());
+        }}
+      ]
     })
     .compileComponents();
   }));

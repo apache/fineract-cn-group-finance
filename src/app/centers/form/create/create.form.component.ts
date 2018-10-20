@@ -18,7 +18,7 @@
  */
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {CenterFormComponent, EmployeeFormData, EmployeeSaveEvent} from '../form.component';
+import {CenterFormComponent, CenterFormData, CenterSaveEvent} from '../form.component';
 import {mapEmployee, mapUser} from '../form.mapper';
 import {Employee} from '../../../services/office/domain/employee.model';
 import {UserWithPassword} from '../../../services/identity/domain/user-with-password.model';
@@ -37,7 +37,7 @@ export class CreateCenterFormComponent implements OnInit, OnDestroy {
 
   @ViewChild('form') formComponent: CenterFormComponent;
 
-  employeeFormData: EmployeeFormData = {
+  employeeFormData: CenterFormData = {
     user: { identifier: '', role: ''},
     employee: { identifier: '', givenName: '', surname: '', contactDetails: [] }
   };
@@ -62,7 +62,7 @@ export class CreateCenterFormComponent implements OnInit, OnDestroy {
     this.store.dispatch({ type: RESET_FORM });
   }
 
-  onSave(event: EmployeeSaveEvent): void {
+  onSave(event: CenterSaveEvent): void {
     const employee: Employee = mapEmployee(event);
     const user: UserWithPassword = mapUser(event);
 
