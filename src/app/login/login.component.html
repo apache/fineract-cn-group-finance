@@ -70,14 +70,15 @@
           </div>
           <div class="app-input1">
             <mat-form-field class="app-input2">
-              <input matInput placeholder="Password" type="password" formControlName="password" autocomplete="new-password" [type]="!hide ? 'password' : 'text'">
+              <input matInput placeholder="Password" type="password" formControlName="password" autocomplete="new-password" [type]="passwordField ? 'password' : 'text'">
               <mat-error *ngIf="form.get('password').hasError('required')">
                   Required
                 </mat-error>
-              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                <mat-icon matSuffix (click)="togglePasswordField()">{{passwordField ? 'visibility_off' : 'visibility'}}</mat-icon>
             </mat-form-field>
           </div>
           <br>
+          <p style="color:red;text-align: center">{{ error$ | async }}</p>
           <br>
           <p>
             <button mat-raised-button color="primary" type="submit" class="btn" [disabled]="form.invalid">Sign In</button>

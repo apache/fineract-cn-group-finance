@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   ];
 
   form: FormGroup;
+  passwordField: boolean = true;
 
   error$: Observable<string>;
 
@@ -100,6 +101,13 @@ export class LoginComponent implements OnInit, OnDestroy {
         tenant
       }
     });
+  }
+  
+  togglePasswordField() {
+    if (this.passwordField)
+      this.passwordField = false
+    else 
+      this.passwordField = true
   }
 
   selectLanguage(selectChange: MatSelectChange): void {
