@@ -63,12 +63,6 @@ export interface CenterSaveEvent {
 })
 export class CenterFormComponent implements OnInit {
 
-  staffs = [
-    {value: '', viewValue: ''},
-    
-  ];
-
-
 
   offices: Observable<Office[]>;
 
