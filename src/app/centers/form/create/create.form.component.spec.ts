@@ -54,7 +54,7 @@ const eventMock: CenterSaveEvent = {
 
 let router: Router;
 
-describe('Test employee form component', () => {
+describe('Test center form component', () => {
 
   let fixture: ComponentFixture<CreateCenterFormComponent>;
 
@@ -101,7 +101,7 @@ describe('Test employee form component', () => {
     testComponent = fixture.componentInstance;
   });
 
-  it('should test if employee is created', async(inject([EmployeesStore], (store: EmployeesStore) => {
+  it('should test if center is created', async(inject([EmployeesStore], (store: EmployeesStore) => {
     fixture.detectChanges();
 
     testComponent.onSave(eventMock);
