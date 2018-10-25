@@ -15,7 +15,8 @@ import {
   MatListModule,
   MatOptionModule,
   MatSelectModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatFormFieldModule
 } from '@angular/material';
 import {CovalentSearchModule, CovalentStepsModule} from '@covalent/core';
 import {TranslateModule} from '@ngx-translate/core';
@@ -38,6 +39,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     MatSelectModule,
     CovalentSearchModule,
     CovalentStepsModule,
+    MatFormFieldModule
 
   ],
   declarations: [

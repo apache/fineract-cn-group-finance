@@ -20,7 +20,7 @@ import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
 import {TranslateModule} from '@ngx-translate/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CovalentStepsModule} from '@covalent/core';
-import {CenterFormComponent, EmployeeSaveEvent} from '../form.component';
+import {CenterFormComponent, CenterSaveEvent} from '../form.component';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import {CreateCenterFormComponent} from './create.form.component';
@@ -33,7 +33,7 @@ import {MatCardModule, MatInputModule, MatOptionModule, MatSelectModule} from '@
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {FimsSharedModule} from '../../../common/common.module';
 
-const eventMock: EmployeeSaveEvent = {
+const eventMock: CenterSaveEvent = {
   detailForm: {
     identifier: 'test',
     firstName: 'test',
@@ -54,7 +54,7 @@ const eventMock: EmployeeSaveEvent = {
 
 let router: Router;
 
-describe('Test employee form component', () => {
+describe('Test center form component', () => {
 
   let fixture: ComponentFixture<CreateCenterFormComponent>;
 
@@ -101,7 +101,7 @@ describe('Test employee form component', () => {
     testComponent = fixture.componentInstance;
   });
 
-  it('should test if employee is created', async(inject([EmployeesStore], (store: EmployeesStore) => {
+  it('should test if center is created', async(inject([EmployeesStore], (store: EmployeesStore) => {
     fixture.detectChanges();
 
     testComponent.onSave(eventMock);
@@ -118,12 +118,5 @@ describe('Test employee form component', () => {
     });
   })));
 
-  xit('should test if error is set on 409', async(() => {
-    fixture.detectChanges();
-
-    fixture.whenStable().then(() => {
-      expect(testComponent.formComponent.detailForm.get('identifier').errors).toBeDefined();
-      expect(testComponent.formComponent.detailForm.get('identifier').errors['unique']).toBeTruthy();
-    });
-  }));
+  
 });

@@ -18,7 +18,7 @@
  */
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {CenterFormComponent, EmployeeFormData, EmployeeSaveEvent} from '../form.component';
+import {CenterFormComponent, CenterFormData, CenterSaveEvent} from '../form.component';
 import {mapContactDetails, mapEmployee} from '../form.mapper';
 import {Employee} from '../../../services/office/domain/employee.model';
 import {User} from '../../../services/identity/domain/user.model';
@@ -33,7 +33,7 @@ export class EditCenterFormComponent implements OnInit {
 
   @ViewChild('form') formComponent: CenterFormComponent;
 
-  formData: Observable<EmployeeFormData>;
+  formData: Observable<CenterFormData>;
 
   employee: Employee;
 
@@ -54,7 +54,7 @@ export class EditCenterFormComponent implements OnInit {
     );
   }
 
-  onSave(event: EmployeeSaveEvent) {
+  onSave(event: CenterSaveEvent) {
     const employee: Employee = mapEmployee(event);
 
     this.store.dispatch({ type: UPDATE, payload: {

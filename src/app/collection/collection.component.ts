@@ -1,17 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params, Router} from '@angular/router';
-import {Employee, Center} from '../services/office/domain/employee.model';
-import {FetchRequest} from '../services/domain/paging/fetch-request.model';
-import {TableData} from '../common/data-table/data-table.component';
 import {Store} from '@ngrx/store';
 import * as fromRoot from '../store';
 import {Observable} from 'rxjs/Observable';
-import {SEARCH} from '../store/employee/employee.actions';
 import { Staff } from '../services/domain/center/staff';
 import { Office } from '../services/office/domain/office.model';
 import { Group } from '../services/domain/group/group';
-
-
+import {Center} from '../services/center/domain/center.model'
 
 @Component({
   selector: 'fims-collection',
@@ -19,8 +13,6 @@ import { Group } from '../services/domain/group/group';
   styleUrls: ['./collection.component.scss']
 })
 export class CollectionComponent implements OnInit {
-  
-  employeeData$: Observable<TableData>;
 
   loading$: Observable<boolean>;
 
@@ -39,42 +31,22 @@ export class CollectionComponent implements OnInit {
 
   searchTerm: string;
 
-  private lastFetchRequest: FetchRequest = {};
+ 
 
-  constructor(private router: Router, private route: ActivatedRoute, private store: Store<fromRoot.State>) {}
+  constructor( private store: Store<fromRoot.State>) {}
 
   ngOnInit(): void {
 
-    this.employeeData$ = this.store.select(fromRoot.getEmployeeSearchResults)
-      .map(employeePage => ({
-        data: employeePage.employees,
-        totalElements: employeePage.totalElements,
-        totalPages: employeePage.totalPages
-      }));
-
+  
     this.loading$ = this.store.select(fromRoot.getEmployeeSearchLoading);
 
-    this.route.queryParams.subscribe((params: Params) => {
-      this.search(params['term']);
-    });
+   
   }
 
   search(searchTerm: string): void {
     this.searchTerm = searchTerm;
-    this.fetchEmployees();
+    
   }
 
-  rowSelect(row: Employee): void {
-    this.router.navigate(['detail', row.identifier], { relativeTo: this.route });
-  }
-
-  fetchEmployees(fetchRequest?: FetchRequest) {
-    if (fetchRequest) {
-      this.lastFetchRequest = fetchRequest;
-    }
-
-    this.lastFetchRequest.searchTerm = this.searchTerm;
-
-    this.store.dispatch({ type: SEARCH, payload: this.lastFetchRequest });
-  }
+  
 }

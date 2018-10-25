@@ -27,13 +27,4 @@ export interface Employee {
   contactDetails: ContactDetail[];
 }
 
-export interface Center {
-  identifier: string;
-  givenName: string;
-  middleName?: string;
-  surname: string;
-  assignedOffice?: string;
-  contactDetails: ContactDetail[];
-}
-
 

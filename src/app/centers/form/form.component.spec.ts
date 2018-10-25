@@ -18,8 +18,8 @@
  */
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, EventEmitter, ViewChild} from '@angular/core';
-import {Employee} from '../../services/office/domain/employee.model';
-import {CenterFormComponent, EmployeeFormData, EmployeeSaveEvent} from './form.component';
+import {Center} from '../../services/center/domain/center.model';
+import {CenterFormComponent, CenterFormData, CenterSaveEvent} from './form.component';
 import {User} from '../../services/identity/domain/user.model';
 import {TranslateModule} from '@ngx-translate/core';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -30,7 +30,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {FimsSharedModule} from '../../common/common.module';
 import {MatIconModule, MatInputModule, MatOptionModule, MatSelectModule} from '@angular/material';
 
-const employeeTemplate: Employee = {
+const centerTemplate: Center = {
   identifier: 'test',
   givenName: 'test',
   middleName: 'test',
@@ -41,6 +41,7 @@ const employeeTemplate: Employee = {
     value: 'test@test.de',
     preferenceLevel: 0
   }],
+
   assignedOffice: 'test'
 };
 
@@ -49,7 +50,7 @@ const userTemplate: User = {
   role: 'test'
 };
 
-describe('Test employee form component', () => {
+describe('Test center form component', () => {
 
   let fixture: ComponentFixture<TestComponent>;
 
@@ -88,17 +89,17 @@ describe('Test employee form component', () => {
   it('should test if the form save the original values', () => {
     fixture.detectChanges();
 
-    testComponent.saveEmitter.subscribe((saveEvent: EmployeeSaveEvent) => {
-      expect(employeeTemplate.identifier).toEqual(saveEvent.detailForm.identifier);
-      expect(employeeTemplate.givenName).toEqual(saveEvent.detailForm.firstName);
-      expect(employeeTemplate.middleName).toEqual(saveEvent.detailForm.middleName);
-      expect(employeeTemplate.surname).toEqual(saveEvent.detailForm.lastName);
+    testComponent.saveEmitter.subscribe((saveEvent: CenterSaveEvent) => {
+      expect(centerTemplate.identifier).toEqual(saveEvent.detailForm.identifier);
+      expect(centerTemplate.givenName).toEqual(saveEvent.detailForm.firstName);
+      expect(centerTemplate.middleName).toEqual(saveEvent.detailForm.middleName);
+      expect(centerTemplate.surname).toEqual(saveEvent.detailForm.lastName);
       expect(saveEvent.detailForm.password).toEqual('');
 
-      expect(employeeTemplate.assignedOffice).toEqual(saveEvent.officeForm.assignedOffice);
+      expect(centerTemplate.assignedOffice).toEqual(saveEvent.officeForm.assignedOffice);
 
-      expect(employeeTemplate.contactDetails.length).toEqual(1);
-      expect(employeeTemplate.contactDetails[0].value).toEqual(saveEvent.contactForm.email);
+      expect(centerTemplate.contactDetails.length).toEqual(1);
+      expect(centerTemplate.contactDetails[0].value).toEqual(saveEvent.contactForm.email);
 
       expect(userTemplate.role).toEqual(saveEvent.detailForm.role);
     });
@@ -110,17 +111,17 @@ describe('Test employee form component', () => {
 
 @Component({
   template: `
-    <fims-employee-form-component #form (onSave)="onSave($event)" (onCancel)="onCancel($event)" [formData]="employeeFormData">
-    </fims-employee-form-component>`
+    <fims-center-form-component #form (onSave)="onSave($event)" (onCancel)="onCancel($event)" [formData]="employeeFormData">
+    </fims-center-form-component>`
 })
 class TestComponent {
 
-  saveEmitter = new EventEmitter<EmployeeSaveEvent>();
+  saveEmitter = new EventEmitter<CenterSaveEvent>();
 
-  @ViewChild('form') formComponent: EmployeeFormComponent;
+  @ViewChild('form') formComponent: CenterFormComponent;
 
-  employeeFormData: EmployeeFormData = {
-    employee: employeeTemplate,
+  employeeFormData: CenterFormData = {
+    employee: centerTemplate,
     user: userTemplate
   };
 
@@ -128,8 +129,8 @@ class TestComponent {
     this.formComponent.save();
   }
 
-  onSave(event: EmployeeSaveEvent): void {
+  onSave(event: CenterSaveEvent): void {
     this.saveEmitter.emit(event);
-  }
 
+  }
 }

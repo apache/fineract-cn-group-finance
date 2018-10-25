@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import {EmployeeSaveEvent} from './form.component';
+import {CenterSaveEvent} from './form.component';
 import {ContactDetail, ContactDetailType} from '../../services/domain/contact/contact-detail.model';
 import {Employee} from '../../services/office/domain/employee.model';
 import {UserWithPassword} from '../../services/identity/domain/user-with-password.model';
@@ -49,7 +49,7 @@ export function mapContactDetails(contactForm: any): ContactDetail[] {
   return contactDetails;
 }
 
-export function mapEmployee(event: EmployeeSaveEvent): Employee {
+export function mapEmployee(event: CenterSaveEvent): Employee {
   const assignedOffice = event.officeForm.assignedOffice;
 
   const contactDetails: ContactDetail[] = mapContactDetails(event.contactForm);
@@ -66,7 +66,7 @@ export function mapEmployee(event: EmployeeSaveEvent): Employee {
   return employee;
 }
 
-export function mapUser(event: EmployeeSaveEvent): UserWithPassword {
+export function mapUser(event: CenterSaveEvent): UserWithPassword {
   const userWithPassword: UserWithPassword = {
     identifier: event.detailForm.identifier,
     password: event.detailForm.password,

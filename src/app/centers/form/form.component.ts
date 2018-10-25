@@ -33,12 +33,12 @@ import {SEARCH as SEARCH_OFFICE} from '../../store/office/office.actions';
 import {SEARCH as SEARCH_ROLE} from '../../store/role/role.actions';
 import { Staff } from '../../services/domain/center/staff';
 
-export interface EmployeeFormData {
+export interface CenterFormData {
   user: User;
   employee: Employee;
 }
 
-export interface EmployeeSaveEvent {
+export interface CenterSaveEvent {
   detailForm: {
     identifier: string;
     firstName: string;
@@ -63,6 +63,7 @@ export interface EmployeeSaveEvent {
 })
 export class CenterFormComponent implements OnInit {
 
+
   offices: Observable<Office[]>;
 
   roles: Observable<Role[]>;
@@ -77,13 +78,13 @@ export class CenterFormComponent implements OnInit {
 
   @Input('editMode') editMode: boolean;
 
-  @Input('formData') set formData(formData: EmployeeFormData) {
+  @Input('formData') set formData(formData: CenterFormData) {
     this.prepareDetailForm(formData.employee, formData.user);
     this.prepareOfficeForm(formData.employee);
     this.prepareContactForm(formData.employee.contactDetails);
   }
 
-  @Output('onSave') onSave = new EventEmitter<EmployeeSaveEvent>();
+  @Output('onSave') onSave = new EventEmitter<CenterSaveEvent>();
   @Output('onCancel') onCancel = new EventEmitter<void>();
 
   constructor(private formBuilder: FormBuilder, private store: Store<fromRoot.State>) {}
@@ -110,7 +111,7 @@ export class CenterFormComponent implements OnInit {
     this.detailForm = this.formBuilder.group({
       identifier: [employee.identifier, [Validators.required, Validators.minLength(3), Validators.maxLength(32), FimsValidators.urlSafe]],
       firstName: [employee.givenName, [Validators.required, Validators.maxLength(256)]],
-      middleName: [employee.middleName, Validators.maxLength(256)],
+     middleName: [employee.middleName, Validators.maxLength(256)],
       lastName: [employee.surname, [Validators.required, Validators.maxLength(256)]],
       password: ['', passwordValidators],
       role: [user ? user.role : '', Validators.required]
@@ -161,6 +162,7 @@ export class CenterFormComponent implements OnInit {
       officeForm: this.officeForm.value
     });
   }
+
 
   cancel(): void {
     this.onCancel.emit();

@@ -63,7 +63,7 @@ const activatedRoute = {
 };
 let router: Router;
 
-describe('Test employee form component', () => {
+describe('Test center form component', () => {
 
   let fixture: ComponentFixture<EditCenterFormComponent>;
 
@@ -117,7 +117,7 @@ describe('Test employee form component', () => {
     testComponent = fixture.componentInstance;
   });
 
-  it('should test if employee is updated', async(inject([EmployeesStore], (store: EmployeesStore) => {
+  it('should test if center is updated', async(inject([EmployeesStore], (store: EmployeesStore) => {
     fixture.detectChanges();
 
     testComponent.formComponent.detailForm.get('password').setValue('newPassword');
