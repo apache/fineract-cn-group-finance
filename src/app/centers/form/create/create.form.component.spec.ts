@@ -118,12 +118,5 @@ describe('Test center form component', () => {
     });
   })));
 
-  xit('should test if error is set on 409', async(() => {
-    fixture.detectChanges();
-
-    fixture.whenStable().then(() => {
-      expect(testComponent.formComponent.detailForm.get('identifier').errors).toBeDefined();
-      expect(testComponent.formComponent.detailForm.get('identifier').errors['unique']).toBeTruthy();
-    });
-  }));
+  
 });
